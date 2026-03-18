@@ -51,7 +51,7 @@
             <div class="stats">
                 <div class="stat"><div class="stat-num">33</div><div class="stat-label">Total Posts</div></div>
                 <div class="stat"><div class="stat-num">21</div><div class="stat-label">High Priority</div></div>
-                <div class="stat"><div class="stat-num">20</div><div class="stat-label">Verified</div></div>
+                <div class="stat"><div class="stat-num">17</div><div class="stat-label">Verified</div></div>
             </div>
         </div>
         <h2 class="section-title">Top Hiring Opportunities</h2>
@@ -61,7 +61,7 @@
     <script>
     async function loadReport() {
         try {
-            const response = await fetch('web3_hiring_posts.json');
+            const response = await fetch('web3_hiring_posts_2026-03-18.json');
             const data = await response.json();
             const results = data.results || [];
             const priorityKeywords = ['hiring', 'hired', 'job', 'role', 'position', 'gtm', 'marketing', 'growth', 'lead', 'head'];
@@ -82,7 +82,7 @@
                         div.innerHTML = `<div class="tweet-embed" id="tweet-${post.tweet_id}"></div>`;
                         container.appendChild(div);
                         if (post.twitter_url) {
-                            twttr.widgets.createTweet(post.tweet_id, document.getElementById(`tweet-${post.tweet_id}), {theme: 'dark', dnt: true});
+                            twttr.widgets.createTweet(post.tweet_id, document.getElementById(`tweet-${post.tweet_id}`), {theme: 'dark', dnt: true});
                         }
                     });
                 });
