@@ -1,0 +1,139 @@
+{
+  "generated": "2026-03-25T11:46:33.622051",
+  "job_titles": {
+    "daily": [
+      {
+        "title": "General Hiring",
+        "count": 10
+      },
+      {
+        "title": "Founder",
+        "count": 2
+      },
+      {
+        "title": "Marketing Manager",
+        "count": 2
+      },
+      {
+        "title": "Product Engineer",
+        "count": 2
+      },
+      {
+        "title": "Thanks",
+        "count": 1
+      }
+    ],
+    "weekly": [
+      {
+        "title": "General Hiring",
+        "count": 10
+      },
+      {
+        "title": "Founder",
+        "count": 2
+      },
+      {
+        "title": "Marketing Manager",
+        "count": 2
+      },
+      {
+        "title": "Product Engineer",
+        "count": 2
+      },
+      {
+        "title": "Thanks",
+        "count": 1
+      }
+    ],
+    "monthly": [
+      {
+        "title": "General Hiring",
+        "count": 10
+      },
+      {
+        "title": "Founder",
+        "count": 2
+      },
+      {
+        "title": "Marketing Manager",
+        "count": 2
+      },
+      {
+        "title": "Product Engineer",
+        "count": 2
+      },
+      {
+        "title": "Thanks",
+        "count": 1
+      }
+    ]
+  },
+  "companies": {
+    "daily": [
+      {
+        "title": "DevanshuDh76701",
+        "count": 1
+      },
+      {
+        "title": "VitaliiTrade",
+        "count": 1
+      },
+      {
+        "title": "LuxeValue",
+        "count": 1
+      },
+      {
+        "title": "brian_leclere",
+        "count": 1
+      },
+      {
+        "title": "winphyo2000",
+        "count": 1
+      }
+    ],
+    "weekly": [
+      {
+        "title": "DevanshuDh76701",
+        "count": 1
+      },
+      {
+        "title": "VitaliiTrade",
+        "count": 1
+      },
+      {
+        "title": "LuxeValue",
+        "count": 1
+      },
+      {
+        "title": "brian_leclere",
+        "count": 1
+      },
+      {
+        "title": "winphyo2000",
+        "count": 1
+      }
+    ],
+    "monthly": [
+      {
+        "title": "DevanshuDh76701",
+        "count": 1
+      },
+      {
+        "title": "VitaliiTrade",
+        "count": 1
+      },
+      {
+        "title": "LuxeValue",
+        "count": 1
+      },
+      {
+        "title": "brian_leclere",
+        "count": 1
+      },
+      {
+        "title": "winphyo2000",
+        "count": 1
+      }
+    ]
+  }
+}
