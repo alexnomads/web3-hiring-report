@@ -1,5 +1,10 @@
 {
-  "generated": "2026-03-25T11:46:33.622051",
+  "generated": "2026-03-25T11:54:29.344661",
+  "sources": {
+    "daily": 22,
+    "weekly": 137,
+    "monthly": 199
+  },
   "job_titles": {
     "daily": [
       {
@@ -71,6 +76,10 @@
   "companies": {
     "daily": [
       {
+        "title": "Unknown",
+        "count": 3
+      },
+      {
         "title": "DevanshuDh76701",
         "count": 1
       },
@@ -84,15 +93,15 @@
       },
       {
         "title": "brian_leclere",
-        "count": 1
-      },
-      {
-        "title": "winphyo2000",
         "count": 1
       }
     ],
     "weekly": [
       {
+        "title": "Unknown",
+        "count": 3
+      },
+      {
         "title": "DevanshuDh76701",
         "count": 1
       },
@@ -106,15 +115,15 @@
       },
       {
         "title": "brian_leclere",
-        "count": 1
-      },
-      {
-        "title": "winphyo2000",
         "count": 1
       }
     ],
     "monthly": [
       {
+        "title": "Unknown",
+        "count": 3
+      },
+      {
         "title": "DevanshuDh76701",
         "count": 1
       },
@@ -128,10 +137,6 @@
       },
       {
         "title": "brian_leclere",
-        "count": 1
-      },
-      {
-        "title": "winphyo2000",
         "count": 1
       }
     ]

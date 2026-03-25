@@ -144,7 +144,9 @@
         function displayList(elementId, data, type) {
             const container = document.getElementById(elementId);
             if (!data || data.length === 0) {
-                container.innerHTML = '<div class="empty">No data available</div>';
+                // Check if we're looking at future data that needs accumulation
+                const isOldPeriod = currentPeriod !== 'daily';
+                container.innerHTML = `<div class="empty">${isOldPeriod ? 'Collecting data...' : 'No data available'}</div>`;
                 return;
             }
             container.innerHTML = '<ul class="trending-list">' + 
