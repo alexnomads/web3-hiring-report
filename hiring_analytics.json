@@ -1,101 +1,142 @@
 {
-  "generated": "2026-03-26T12:32:11.536420",
+  "generated": "2026-03-26T12:36:43.527702",
   "sources": {
-    "daily": 225,
-    "valid_daily": 0,
-    "valid_weekly": 16,
-    "valid_monthly": 16
+    "daily_raw": 8,
+    "weekly_raw": 10,
+    "monthly_raw": 10
   },
   "job_titles": {
-    "daily": [],
-    "weekly": [
-      {
-        "title": "Founder",
-        "count": 3
-      },
-      {
-        "title": "Product Engineer",
-        "count": 3
-      },
+    "daily": [
       {
         "title": "Marketing Manager",
         "count": 2
       },
       {
-        "title": "Hello",
+        "title": "Jaya",
         "count": 1
       },
       {
+        "title": "Brands",
+        "count": 1
+      },
+      {
+        "title": "Founder",
+        "count": 1
+      },
+      {
+        "title": "We\u2019re A Motion Designer",
+        "count": 1
+      }
+    ],
+    "weekly": [
+      {
+        "title": "Marketing Manager",
+        "count": 2
+      },
+      {
         "title": "Bd Lead",
+        "count": 1
+      },
+      {
+        "title": "Product Engineer",
+        "count": 1
+      },
+      {
+        "title": "Jaya",
+        "count": 1
+      },
+      {
+        "title": "Brands",
         "count": 1
       }
     ],
     "monthly": [
       {
-        "title": "Founder",
-        "count": 3
-      },
-      {
-        "title": "Product Engineer",
-        "count": 3
-      },
-      {
         "title": "Marketing Manager",
         "count": 2
       },
       {
-        "title": "Hello",
+        "title": "Bd Lead",
         "count": 1
       },
       {
-        "title": "Bd Lead",
+        "title": "Product Engineer",
+        "count": 1
+      },
+      {
+        "title": "Jaya",
+        "count": 1
+      },
+      {
+        "title": "Brands",
         "count": 1
       }
     ]
   },
   "companies": {
-    "daily": [],
-    "weekly": [
+    "daily": [
       {
-        "title": "2dayinghistory",
-        "count": 4
+        "title": "zhannamanzyk",
+        "count": 1
       },
       {
-        "title": "Hyperian_backup",
+        "title": "SofeNode",
+        "count": 1
+      },
+      {
+        "title": "frogule",
+        "count": 1
+      },
+      {
+        "title": "usevouchify",
+        "count": 1
+      },
+      {
+        "title": "ChaudharyjiTec4",
+        "count": 1
+      }
+    ],
+    "weekly": [
+      {
+        "title": "IsrafilOnchain",
         "count": 2
       },
       {
-        "title": "Supriadi1954340",
-        "count": 1
-      },
-      {
-        "title": "IsrafilOnchain",
-        "count": 1
-      },
-      {
         "title": "Sophietechchain",
+        "count": 1
+      },
+      {
+        "title": "zhannamanzyk",
+        "count": 1
+      },
+      {
+        "title": "SofeNode",
+        "count": 1
+      },
+      {
+        "title": "frogule",
         "count": 1
       }
     ],
     "monthly": [
       {
-        "title": "2dayinghistory",
-        "count": 4
-      },
-      {
-        "title": "Hyperian_backup",
+        "title": "IsrafilOnchain",
         "count": 2
       },
       {
-        "title": "Supriadi1954340",
-        "count": 1
-      },
-      {
-        "title": "IsrafilOnchain",
-        "count": 1
-      },
-      {
         "title": "Sophietechchain",
+        "count": 1
+      },
+      {
+        "title": "zhannamanzyk",
+        "count": 1
+      },
+      {
+        "title": "SofeNode",
+        "count": 1
+      },
+      {
+        "title": "frogule",
         "count": 1
       }
     ]
