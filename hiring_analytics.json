@@ -1,142 +1,101 @@
 {
-  "generated": "2026-03-25T12:22:25.930578",
+  "generated": "2026-03-26T12:32:11.536420",
   "sources": {
-    "daily": 22,
-    "weekly": 137,
-    "monthly": 199
+    "daily": 225,
+    "valid_daily": 0,
+    "valid_weekly": 16,
+    "valid_monthly": 16
   },
   "job_titles": {
-    "daily": [
-      {
-        "title": "General Hiring",
-        "count": 10
-      },
-      {
-        "title": "Founder",
-        "count": 2
-      },
-      {
-        "title": "Marketing Manager",
-        "count": 2
-      },
-      {
-        "title": "Product Engineer",
-        "count": 2
-      },
-      {
-        "title": "Thanks",
-        "count": 1
-      }
-    ],
+    "daily": [],
     "weekly": [
       {
-        "title": "General Hiring",
-        "count": 10
+        "title": "Founder",
+        "count": 3
       },
       {
-        "title": "Founder",
-        "count": 2
+        "title": "Product Engineer",
+        "count": 3
       },
       {
         "title": "Marketing Manager",
         "count": 2
       },
       {
-        "title": "Product Engineer",
-        "count": 2
+        "title": "Hello",
+        "count": 1
       },
       {
-        "title": "Thanks",
+        "title": "Bd Lead",
         "count": 1
       }
     ],
     "monthly": [
       {
-        "title": "General Hiring",
-        "count": 10
+        "title": "Founder",
+        "count": 3
       },
       {
-        "title": "Founder",
-        "count": 2
+        "title": "Product Engineer",
+        "count": 3
       },
       {
         "title": "Marketing Manager",
         "count": 2
       },
       {
-        "title": "Product Engineer",
-        "count": 2
+        "title": "Hello",
+        "count": 1
       },
       {
-        "title": "Thanks",
+        "title": "Bd Lead",
         "count": 1
       }
     ]
   },
   "companies": {
-    "daily": [
-      {
-        "title": "Unknown",
-        "count": 3
-      },
-      {
-        "title": "DevanshuDh76701",
-        "count": 1
-      },
-      {
-        "title": "VitaliiTrade",
-        "count": 1
-      },
-      {
-        "title": "LuxeValue",
-        "count": 1
-      },
-      {
-        "title": "brian_leclere",
-        "count": 1
-      }
-    ],
+    "daily": [],
     "weekly": [
       {
-        "title": "Unknown",
-        "count": 3
+        "title": "2dayinghistory",
+        "count": 4
       },
       {
-        "title": "DevanshuDh76701",
+        "title": "Hyperian_backup",
+        "count": 2
+      },
+      {
+        "title": "Supriadi1954340",
         "count": 1
       },
       {
-        "title": "VitaliiTrade",
+        "title": "IsrafilOnchain",
         "count": 1
       },
       {
-        "title": "LuxeValue",
-        "count": 1
-      },
-      {
-        "title": "brian_leclere",
+        "title": "Sophietechchain",
         "count": 1
       }
     ],
     "monthly": [
       {
-        "title": "Unknown",
-        "count": 3
+        "title": "2dayinghistory",
+        "count": 4
       },
       {
-        "title": "DevanshuDh76701",
+        "title": "Hyperian_backup",
+        "count": 2
+      },
+      {
+        "title": "Supriadi1954340",
         "count": 1
       },
       {
-        "title": "VitaliiTrade",
+        "title": "IsrafilOnchain",
         "count": 1
       },
       {
-        "title": "LuxeValue",
-        "count": 1
-      },
-      {
-        "title": "brian_leclere",
+        "title": "Sophietechchain",
         "count": 1
       }
     ]
