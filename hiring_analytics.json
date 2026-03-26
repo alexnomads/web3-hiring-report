@@ -1,14 +1,18 @@
 {
-  "generated": "2026-03-26T12:36:43.527702",
+  "generated": "2026-03-26T12:52:18.840949",
   "sources": {
-    "daily_raw": 8,
-    "weekly_raw": 10,
-    "monthly_raw": 10
+    "daily_raw": 17,
+    "weekly_raw": 19,
+    "monthly_raw": 19
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Marketing Manager",
+        "title": "Founder",
+        "count": 2
+      },
+      {
+        "title": "Growth Manager",
         "count": 2
       },
       {
@@ -16,21 +20,21 @@
         "count": 1
       },
       {
-        "title": "Brands",
+        "title": "X Is Deep",
         "count": 1
       },
       {
-        "title": "Founder",
-        "count": 1
-      },
-      {
-        "title": "We\u2019re A Motion Designer",
+        "title": "Hiring: Apac Bd",
         "count": 1
       }
     ],
     "weekly": [
       {
-        "title": "Marketing Manager",
+        "title": "Founder",
+        "count": 2
+      },
+      {
+        "title": "Growth Manager",
         "count": 2
       },
       {
@@ -43,16 +47,16 @@
       },
       {
         "title": "Jaya",
-        "count": 1
-      },
-      {
-        "title": "Brands",
         "count": 1
       }
     ],
     "monthly": [
       {
-        "title": "Marketing Manager",
+        "title": "Founder",
+        "count": 2
+      },
+      {
+        "title": "Growth Manager",
         "count": 2
       },
       {
@@ -65,10 +69,6 @@
       },
       {
         "title": "Jaya",
-        "count": 1
-      },
-      {
-        "title": "Brands",
         "count": 1
       }
     ]
@@ -76,11 +76,11 @@
   "companies": {
     "daily": [
       {
-        "title": "zhannamanzyk",
-        "count": 1
+        "title": "pionex",
+        "count": 2
       },
       {
-        "title": "SofeNode",
+        "title": "zhannamanzyk",
         "count": 1
       },
       {
@@ -88,11 +88,11 @@
         "count": 1
       },
       {
-        "title": "usevouchify",
+        "title": "esatoshiclub",
         "count": 1
       },
       {
-        "title": "ChaudharyjiTec4",
+        "title": "Douro",
         "count": 1
       }
     ],
@@ -102,15 +102,15 @@
         "count": 2
       },
       {
+        "title": "pionex",
+        "count": 2
+      },
+      {
         "title": "Sophietechchain",
         "count": 1
       },
       {
         "title": "zhannamanzyk",
-        "count": 1
-      },
-      {
-        "title": "SofeNode",
         "count": 1
       },
       {
@@ -124,15 +124,15 @@
         "count": 2
       },
       {
+        "title": "pionex",
+        "count": 2
+      },
+      {
         "title": "Sophietechchain",
         "count": 1
       },
       {
         "title": "zhannamanzyk",
-        "count": 1
-      },
-      {
-        "title": "SofeNode",
         "count": 1
       },
       {
