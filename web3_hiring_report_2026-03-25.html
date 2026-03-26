@@ -61,7 +61,7 @@
     <script>
     async function loadReport() {
         try {
-            const response = await fetch('web3_hiring_posts.json');
+            const response = await fetch('web3_hiring_posts_2026-03-25.json');
             const data = await response.json();
             const results = data.results || [];
             const priorityKeywords = ['hiring', 'hired', 'job', 'role', 'position', 'gtm', 'marketing', 'growth', 'lead', 'head'];
@@ -79,10 +79,10 @@
                     filtered.slice(0, 10).forEach(post => {
                         const div = document.createElement('div');
                         div.className = 'card';
-                        div.innerHTML = '<div class="tweet-embed" id="$${tweetId}"></div>';
+                        div.innerHTML = '<div class="tweet-embed" id="tweet-${post.tweet_id}"></div>';
                         container.appendChild(div);
                         if (post.twitter_url) {
-                            twttr.widgets.createTweet(post.tweet_id, document.getElementById('$${tweetId}'), {theme: 'dark', dnt: true});
+                            twttr.widgets.createTweet(post.tweet_id, document.getElementById('tweet-${post.tweet_id}'), {theme: 'dark', dnt: true});
                         }
                     });
                 });
