@@ -7,261 +7,86 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1419; color: #e7e9ea; min-height: 100vh; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container { max-width: 600px; margin: 0 auto; }
         .header { text-align: center; margin-bottom: 30px; padding: 20px; background: #1a1f2e; border-radius: 12px; }
         .header h1 { font-size: 1.8rem; margin-bottom: 10px; background: linear-gradient(90deg, #00d4aa, #00a8e8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .main-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        
-        @media (max-width: 900px) {
-            .main-layout { grid-template-columns: 1fr; }
-        }
-        
-        .section-title { font-size: 1.2rem; color: #00d4aa; margin: 30px 0 15px; padding-bottom: 10px; border-bottom: 1px solid #2a3142; }
-        
-        /* Report Cards */
         .report-card { background: #1a1f2e; border-radius: 12px; padding: 20px; margin-bottom: 15px; border: 1px solid #2a3142; }
         .report-card a { color: #e7e9ea; text-decoration: none; display: block; }
         .report-card:hover { border-color: #00d4aa; }
-        .report-date { font-size: 1.1rem; font-weight: bold; margin-bottom: 5px; }
+        .report-date { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; }
         .report-link { color: #00d4aa; font-size: 0.9rem; }
-        
-        /* Trending Insights Panel */
-        .trending-panel { background: #1a1f2e; border-radius: 12px; padding: 20px; border: 1px solid #2a3142; }
-        .trending-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .trending-header h2 { font-size: 1.3rem; color: #fff; }
-        
-        .insight-section { margin-bottom: 25px; }
-        .insight-section h3 { font-size: 1rem; color: #8892b0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        .insight-section h3 .icon { font-size: 1.2rem; }
-        
-        /* Tabs */
-        .tabs { display: flex; gap: 8px; margin-bottom: 15px; }
-        .tab-btn { 
-            background: #2a3142; border: none; color: #8892b0; padding: 8px 16px; 
-            border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
-        }
-        .tab-btn:hover { background: #3a4152; color: #fff; }
-        .tab-btn.active { background: #00d4aa; color: #000; font-weight: 600; }
-        
-        /* Trending Lists */
-        .trending-list { list-style: none; }
-        .trending-item { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 6px; margin-bottom: 6px;
-        }
-        .trending-item:hover { background: rgba(255,255,255,0.06); }
-        .trending-rank { 
-            width: 24px; height: 24px; background: #2a3142; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            font-size: 0.75rem; font-weight: bold; margin-right: 12px; color: #8892b0;
-        }
-        .trending-item:nth-child(1) .trending-rank { background: #ffd700; color: #000; }
-        .trending-item:nth-child(2) .trending-rank { background: #c0c0c0; color: #000; }
-        .trending-item:nth-child(3) .trending-rank { background: #cd7f32; color: #000; }
-        .trending-name { flex: 1; font-size: 0.95rem; }
-        .trending-count { 
-            background: #2a3142; padding: 4px 10px; border-radius: 12px; 
-            font-size: 0.8rem; color: #00d4aa; font-weight: 600;
-        }
-        
-        /* Empty State */
-        .empty-state { text-align: center; padding: 30px; color: #8892b0; font-size: 0.9rem; }
-        .loading { text-align: center; padding: 20px; color: #00d4aa; }
-        
-        /* Hide all tab content by default */
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        
-        .last-updated { text-align: center; color: #8892b0; font-size: 0.8rem; margin-top: 20px; padding-top: 15px; border-top: 1px solid #2a3142; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎯 Web3 Hiring Report</h1>
-            <p>Daily monitoring archive + Trending Insights</p>
+            <h1>Web3 Hiring Reports</h1>
+            <p>Daily monitoring archive</p>
         </div>
-        
-        <div class="main-layout">
-            <!-- Left: Daily Monitoring Archive -->
-            <div class="archive-section">
-                <h2 class="section-title">📅 Daily Monitoring Archive</h2>
-                <div id="archive-list"></div>
-            </div>
-            
-            <!-- Right: Trending Insights -->
-            <div class="trending-section">
-                <h2 class="section-title">📊 Trending Insights</h2>
-                <div class="trending-panel">
-                    <div class="trending-header">
-                        <span>📈</span>
-                        <h2>Most Active Job Titles</h2>
-                    </div>
-                    
-                    <div class="insight-section">
-                        <div class="tabs">
-                            <button class="tab-btn active" data-target="jobs-daily" data-type="jobs">Today</button>
-                            <button class="tab-btn" data-target="jobs-weekly" data-type="jobs">7 Days</button>
-                            <button class="tab-btn" data-target="jobs-monthly" data-type="jobs">30 Days</button>
-                        </div>
-                        
-                        <div id="jobs-daily" class="tab-content active">
-                            <div class="loading">Loading...</div>
-                        </div>
-                        <div id="jobs-weekly" class="tab-content">
-                            <div class="loading">Loading...</div>
-                        </div>
-                        <div id="jobs-monthly" class="tab-content">
-                            <div class="loading">Loading...</div>
-                        </div>
-                    </div>
-                    
-                    <div class="trending-header" style="margin-top: 30px;">
-                        <span>🏢</span>
-                        <h2>Top Hiring Companies</h2>
-                    </div>
-                    
-                    <div class="insight-section">
-                        <div class="tabs">
-                            <button class="tab-btn active" data-target="companies-daily" data-type="companies">Today</button>
-                            <button class="tab-btn" data-target="companies-weekly" data-type="companies">7 Days</button>
-                            <button class="tab-btn" data-target="companies-monthly" data-type="companies">30 Days</button>
-                        </div>
-                        
-                        <div id="companies-daily" class="tab-content active">
-                            <div class="loading">Loading...</div>
-                        </div>
-                        <div id="companies-weekly" class="tab-content">
-                            <div class="loading">Loading...</div>
-                        </div>
-                        <div id="companies-monthly" class="tab-content">
-                            <div class="loading">Loading...</div>
-                        </div>
-                    </div>
-                    
-                    <div class="last-updated" id="last-updated"></div>
-                </div>
-            </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-27.html">
+                <div class="report-date">March 27, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
         </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-26.html">
+                <div class="report-date">March 26, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
+        </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-25.html">
+                <div class="report-date">March 25, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
+        </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-24.html">
+                <div class="report-date">March 24, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
+        </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-23.html">
+                <div class="report-date">March 23, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
+        </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-20.html">
+                <div class="report-date">March 20, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
+        </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-19.html">
+                <div class="report-date">March 19, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
+        </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-18.html">
+                <div class="report-date">March 18, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
+        </div>
+
+        <div class="report-card">
+            <a href="web3_hiring_report_2026-03-17.html">
+                <div class="report-date">March 17, 2026</div>
+                <div class="report-link">View Report →</div>
+            </a>
+        </div>
+
     </div>
-    
-    <script>
-        // Tab switching
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const type = this.dataset.type;
-                // Update active button
-                this.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Update active content
-                document.querySelectorAll(`#${this.dataset.target}`).forEach(content => {
-                    content.classList.add('active');
-                });
-            });
-        });
-        
-        // Load archive list
-        async function loadArchive() {
-            const dates = [];
-            for (let i = 0; i < 30; i++) {
-                const d = new Date();
-                d.setDate(d.getDate() - i);
-                const dateStr = d.toISOString().split('T')[0];
-                dates.push(dateStr);
-            }
-            
-            const container = document.getElementById('archive-list');
-            let html = '';
-            
-            for (const date of dates) {
-                const link = `web3_hiring_report_${date}.html`;
-                try {
-                    const response = await fetch(link, { method: 'HEAD' });
-                    if (response.ok) {
-                        const displayDate = new Date(date + 'T00:00:00').toLocaleDateString('en-US', { 
-                            weekday: 'short', month: 'short', day: 'numeric' 
-                        });
-                        html += `
-                            <div class="report-card">
-                                <a href="${link}">
-                                    <div class="report-date">${displayDate}</div>
-                                    <div class="report-link">View Report →</div>
-                                </a>
-                            </div>
-                        `;
-                    }
-                } catch (e) {}
-            }
-            
-            if (!html) {
-                html = '<div class="empty-state">No reports available yet</div>';
-            }
-            container.innerHTML = html;
-        }
-        
-        // Load trending data
-        async function loadTrending() {
-            try {
-                const response = await fetch('hiring_analytics.json');
-                const data = await response.json();
-                
-                // Update timestamp
-                const date = new Date(data.generated);
-                document.getElementById('last-updated').textContent = `Last updated: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-                
-                // Render job titles
-                renderList('jobs-daily', data.job_titles.daily);
-                renderList('jobs-weekly', data.job_titles.weekly);
-                renderList('jobs-monthly', data.job_titles.monthly);
-                
-                // Render companies
-                renderList('companies-daily', data.companies.daily);
-                renderList('companies-weekly', data.companies.weekly);
-                renderList('companies-monthly', data.companies.monthly);
-                
-            } catch (e) {
-                console.error('Error loading analytics:', e);
-                document.querySelectorAll('.loading').forEach(el => {
-                    el.innerHTML = '<div class="empty-state">No data available</div>';
-                });
-            }
-        }
-        
-        function renderList(containerId, items) {
-            const container = document.getElementById(containerId);
-            if (!items || items.length === 0) {
-                container.innerHTML = '<div class="empty-state">No data available</div>';
-                return;
-            }
-            
-            let html = '<ul class="trending-list">';
-            items.forEach((item, i) => {
-                html += `
-                    <li class="trending-item">
-                        <span class="trending-rank">${i + 1}</span>
-                        <span class="trending-name">${escapeHtml(item.title)}</span>
-                        <span class="trending-count">${item.count}</span>
-                    </li>
-                `;
-            });
-            html += '</ul>';
-            container.innerHTML = html;
-        }
-        
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-        
-        // Initialize
-        loadArchive();
-        loadTrending();
-        
-        // Refresh every 5 minutes
-        setInterval(loadTrending, 300000);
-    </script>
 </body>
 </html>

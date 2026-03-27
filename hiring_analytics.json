@@ -1,9 +1,9 @@
 {
-  "generated": "2026-03-26T12:52:18.840949",
+  "generated": "2026-03-27T10:00:58.241713",
   "sources": {
-    "daily_raw": 17,
-    "weekly_raw": 19,
-    "monthly_raw": 19
+    "daily_raw": 15,
+    "weekly_raw": 34,
+    "monthly_raw": 34
   },
   "job_titles": {
     "daily": [
@@ -12,132 +12,132 @@
         "count": 2
       },
       {
-        "title": "Growth Manager",
+        "title": "Head Of Marketing",
         "count": 2
       },
       {
-        "title": "Jaya",
+        "title": "Senior Software Engineer",
         "count": 1
       },
       {
-        "title": "X Is Deep",
+        "title": "We Need A Heavy-hitter",
         "count": 1
       },
       {
-        "title": "Hiring: Apac Bd",
+        "title": "Coinbase Base \u2192 Aave Cpo \u2192",
         "count": 1
       }
     ],
     "weekly": [
       {
         "title": "Founder",
-        "count": 2
+        "count": 4
+      },
+      {
+        "title": "Head Of Marketing",
+        "count": 3
       },
       {
         "title": "Growth Manager",
-        "count": 2
-      },
-      {
-        "title": "Bd Lead",
-        "count": 1
-      },
-      {
-        "title": "Product Engineer",
-        "count": 1
+        "count": 3
       },
       {
         "title": "Jaya",
-        "count": 1
+        "count": 2
+      },
+      {
+        "title": "X Is Deep",
+        "count": 2
       }
     ],
     "monthly": [
       {
         "title": "Founder",
-        "count": 2
+        "count": 4
+      },
+      {
+        "title": "Head Of Marketing",
+        "count": 3
       },
       {
         "title": "Growth Manager",
-        "count": 2
-      },
-      {
-        "title": "Bd Lead",
-        "count": 1
-      },
-      {
-        "title": "Product Engineer",
-        "count": 1
+        "count": 3
       },
       {
         "title": "Jaya",
-        "count": 1
+        "count": 2
+      },
+      {
+        "title": "X Is Deep",
+        "count": 2
       }
     ]
   },
   "companies": {
     "daily": [
       {
-        "title": "pionex",
-        "count": 2
-      },
-      {
-        "title": "zhannamanzyk",
+        "title": "BitGo",
         "count": 1
       },
       {
-        "title": "frogule",
+        "title": "philosofaprime",
         "count": 1
       },
       {
-        "title": "esatoshiclub",
+        "title": "DuongDjango",
         "count": 1
       },
       {
-        "title": "Douro",
+        "title": "memoofun",
+        "count": 1
+      },
+      {
+        "title": "HashHustleHQ",
         "count": 1
       }
     ],
     "weekly": [
       {
+        "title": "pionex",
+        "count": 3
+      },
+      {
         "title": "IsrafilOnchain",
         "count": 2
       },
       {
-        "title": "pionex",
+        "title": "zhannamanzyk",
         "count": 2
       },
       {
-        "title": "Sophietechchain",
-        "count": 1
+        "title": "esatoshiclub",
+        "count": 2
       },
       {
-        "title": "zhannamanzyk",
-        "count": 1
-      },
-      {
-        "title": "frogule",
-        "count": 1
+        "title": "Trust",
+        "count": 2
       }
     ],
     "monthly": [
       {
+        "title": "pionex",
+        "count": 3
+      },
+      {
         "title": "IsrafilOnchain",
         "count": 2
       },
       {
-        "title": "pionex",
+        "title": "zhannamanzyk",
         "count": 2
       },
       {
-        "title": "Sophietechchain",
-        "count": 1
+        "title": "esatoshiclub",
+        "count": 2
       },
       {
-        "title": "zhannamanzyk",
-        "count": 1
-      },
-      {
-        "title": "frogule",
-        "count": 1
+        "title": "Trust",
+        "count": 2
       }
     ]
   }
