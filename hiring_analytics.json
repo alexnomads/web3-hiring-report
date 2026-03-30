@@ -1,37 +1,29 @@
 {
-  "generated": "2026-03-27T10:00:58.241713",
+  "generated": "2026-03-30T10:01:04.657256",
   "sources": {
-    "daily_raw": 15,
-    "weekly_raw": 34,
-    "monthly_raw": 34
+    "daily_raw": 3,
+    "weekly_raw": 44,
+    "monthly_raw": 44
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Founder",
-        "count": 2
-      },
-      {
-        "title": "Head Of Marketing",
-        "count": 2
-      },
-      {
-        "title": "Senior Software Engineer",
+        "title": "Chief",
         "count": 1
       },
       {
-        "title": "We Need A Heavy-hitter",
+        "title": "Security Engineer",
         "count": 1
       },
       {
-        "title": "Coinbase Base \u2192 Aave Cpo \u2192",
+        "title": "Community Manager",
         "count": 1
       }
     ],
     "weekly": [
       {
         "title": "Founder",
-        "count": 4
+        "count": 5
       },
       {
         "title": "Head Of Marketing",
@@ -42,18 +34,18 @@
         "count": 3
       },
       {
-        "title": "Jaya",
+        "title": "Community Manager",
         "count": 2
       },
       {
-        "title": "X Is Deep",
+        "title": "We Need A Heavy-hitter",
         "count": 2
       }
     ],
     "monthly": [
       {
         "title": "Founder",
-        "count": 4
+        "count": 5
       },
       {
         "title": "Head Of Marketing",
@@ -64,11 +56,11 @@
         "count": 3
       },
       {
-        "title": "Jaya",
+        "title": "Community Manager",
         "count": 2
       },
       {
-        "title": "X Is Deep",
+        "title": "We Need A Heavy-hitter",
         "count": 2
       }
     ]
@@ -76,30 +68,30 @@
   "companies": {
     "daily": [
       {
-        "title": "BitGo",
+        "title": "Atlas",
         "count": 1
       },
       {
-        "title": "philosofaprime",
+        "title": "Perplexity",
         "count": 1
       },
       {
-        "title": "DuongDjango",
-        "count": 1
-      },
-      {
-        "title": "memoofun",
-        "count": 1
-      },
-      {
-        "title": "HashHustleHQ",
+        "title": "KingDipszy",
         "count": 1
       }
     ],
     "weekly": [
       {
+        "title": "ChaudharyjiTec4",
+        "count": 3
+      },
+      {
         "title": "pionex",
         "count": 3
+      },
+      {
+        "title": "DuongDjango",
+        "count": 2
       },
       {
         "title": "IsrafilOnchain",
@@ -107,21 +99,21 @@
       },
       {
         "title": "zhannamanzyk",
-        "count": 2
-      },
-      {
-        "title": "esatoshiclub",
-        "count": 2
-      },
-      {
-        "title": "Trust",
         "count": 2
       }
     ],
     "monthly": [
       {
+        "title": "ChaudharyjiTec4",
+        "count": 3
+      },
+      {
         "title": "pionex",
         "count": 3
+      },
+      {
+        "title": "DuongDjango",
+        "count": 2
       },
       {
         "title": "IsrafilOnchain",
@@ -129,14 +121,6 @@
       },
       {
         "title": "zhannamanzyk",
-        "count": 2
-      },
-      {
-        "title": "esatoshiclub",
-        "count": 2
-      },
-      {
-        "title": "Trust",
         "count": 2
       }
     ]
