@@ -1,22 +1,22 @@
 {
-  "generated": "2026-03-30T10:01:04.657256",
+  "generated": "2026-03-31T10:00:55.060388",
   "sources": {
     "daily_raw": 3,
-    "weekly_raw": 44,
-    "monthly_raw": 44
+    "weekly_raw": 47,
+    "monthly_raw": 47
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Chief",
+        "title": "Product Manager",
         "count": 1
       },
       {
-        "title": "Security Engineer",
+        "title": "Workshop",
         "count": 1
       },
       {
-        "title": "Community Manager",
+        "title": "Q1 2026",
         "count": 1
       }
     ],
@@ -68,15 +68,15 @@
   "companies": {
     "daily": [
       {
-        "title": "Atlas",
+        "title": "HashMaskGlobal",
         "count": 1
       },
       {
-        "title": "Perplexity",
+        "title": "ProofofIntern",
         "count": 1
       },
       {
-        "title": "KingDipszy",
+        "title": "VeretinR",
         "count": 1
       }
     ],
@@ -90,15 +90,15 @@
         "count": 3
       },
       {
+        "title": "VeretinR",
+        "count": 2
+      },
+      {
         "title": "DuongDjango",
         "count": 2
       },
       {
         "title": "IsrafilOnchain",
-        "count": 2
-      },
-      {
-        "title": "zhannamanzyk",
         "count": 2
       }
     ],
@@ -112,15 +112,15 @@
         "count": 3
       },
       {
+        "title": "VeretinR",
+        "count": 2
+      },
+      {
         "title": "DuongDjango",
         "count": 2
       },
       {
         "title": "IsrafilOnchain",
-        "count": 2
-      },
-      {
-        "title": "zhannamanzyk",
         "count": 2
       }
     ]
