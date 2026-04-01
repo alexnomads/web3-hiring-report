@@ -1,18 +1,22 @@
 {
-  "generated": "2026-03-31T10:00:55.060388",
+  "generated": "2026-04-01T10:00:55.095411",
   "sources": {
-    "daily_raw": 3,
-    "weekly_raw": 47,
-    "monthly_raw": 47
+    "daily_raw": 4,
+    "weekly_raw": 51,
+    "monthly_raw": 51
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Product Manager",
+        "title": "Know Any",
         "count": 1
       },
       {
-        "title": "Workshop",
+        "title": "Senior Product Manager",
+        "count": 1
+      },
+      {
+        "title": "Product Manager",
         "count": 1
       },
       {
@@ -34,11 +38,11 @@
         "count": 3
       },
       {
-        "title": "Community Manager",
+        "title": "Product Manager",
         "count": 2
       },
       {
-        "title": "We Need A Heavy-hitter",
+        "title": "Q1 2026",
         "count": 2
       }
     ],
@@ -56,11 +60,11 @@
         "count": 3
       },
       {
-        "title": "Community Manager",
+        "title": "Product Manager",
         "count": 2
       },
       {
-        "title": "We Need A Heavy-hitter",
+        "title": "Q1 2026",
         "count": 2
       }
     ]
@@ -68,11 +72,15 @@
   "companies": {
     "daily": [
       {
-        "title": "HashMaskGlobal",
+        "title": "HoldexIo",
         "count": 1
       },
       {
-        "title": "ProofofIntern",
+        "title": "Vector",
+        "count": 1
+      },
+      {
+        "title": "HashMaskGlobal",
         "count": 1
       },
       {
@@ -82,6 +90,10 @@
     ],
     "weekly": [
       {
+        "title": "VeretinR",
+        "count": 3
+      },
+      {
         "title": "ChaudharyjiTec4",
         "count": 3
       },
@@ -90,20 +102,20 @@
         "count": 3
       },
       {
-        "title": "VeretinR",
+        "title": "HashMaskGlobal",
         "count": 2
       },
       {
         "title": "DuongDjango",
-        "count": 2
-      },
-      {
-        "title": "IsrafilOnchain",
         "count": 2
       }
     ],
     "monthly": [
       {
+        "title": "VeretinR",
+        "count": 3
+      },
+      {
         "title": "ChaudharyjiTec4",
         "count": 3
       },
@@ -112,15 +124,11 @@
         "count": 3
       },
       {
-        "title": "VeretinR",
+        "title": "HashMaskGlobal",
         "count": 2
       },
       {
         "title": "DuongDjango",
-        "count": 2
-      },
-      {
-        "title": "IsrafilOnchain",
         "count": 2
       }
     ]
