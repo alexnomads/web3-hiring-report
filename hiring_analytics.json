@@ -1,33 +1,45 @@
 {
-  "generated": "2026-04-01T10:00:55.095411",
+  "generated": "2026-04-02T10:01:01.022422",
   "sources": {
-    "daily_raw": 4,
-    "weekly_raw": 51,
-    "monthly_raw": 51
+    "daily_raw": 9,
+    "weekly_raw": 60,
+    "monthly_raw": 60
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Know Any",
-        "count": 1
+        "title": "Founder",
+        "count": 2
       },
       {
         "title": "Senior Product Manager",
+        "count": 2
+      },
+      {
+        "title": "Community Manager",
         "count": 1
       },
       {
-        "title": "Product Manager",
+        "title": "Senior Growth Strategy Manager",
         "count": 1
       },
       {
-        "title": "Q1 2026",
+        "title": "@base (coinbase L2) Is A Social",
         "count": 1
       }
     ],
     "weekly": [
       {
         "title": "Founder",
-        "count": 5
+        "count": 7
+      },
+      {
+        "title": "Community Manager",
+        "count": 3
+      },
+      {
+        "title": "Senior Product Manager",
+        "count": 3
       },
       {
         "title": "Head Of Marketing",
@@ -36,20 +48,20 @@
       {
         "title": "Growth Manager",
         "count": 3
-      },
-      {
-        "title": "Product Manager",
-        "count": 2
-      },
-      {
-        "title": "Q1 2026",
-        "count": 2
       }
     ],
     "monthly": [
       {
         "title": "Founder",
-        "count": 5
+        "count": 7
+      },
+      {
+        "title": "Community Manager",
+        "count": 3
+      },
+      {
+        "title": "Senior Product Manager",
+        "count": 3
       },
       {
         "title": "Head Of Marketing",
@@ -58,33 +70,29 @@
       {
         "title": "Growth Manager",
         "count": 3
-      },
-      {
-        "title": "Product Manager",
-        "count": 2
-      },
-      {
-        "title": "Q1 2026",
-        "count": 2
       }
     ]
   },
   "companies": {
     "daily": [
       {
-        "title": "HoldexIo",
+        "title": "XCARToz",
         "count": 1
       },
       {
-        "title": "Vector",
+        "title": "OKX",
         "count": 1
       },
       {
-        "title": "HashMaskGlobal",
+        "title": "VitaliiTrade",
         "count": 1
       },
       {
-        "title": "VeretinR",
+        "title": "CurareCrypto",
+        "count": 1
+      },
+      {
+        "title": "CultMarket",
         "count": 1
       }
     ],
