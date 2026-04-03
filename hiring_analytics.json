@@ -1,30 +1,30 @@
 {
-  "generated": "2026-04-02T10:01:01.022422",
+  "generated": "2026-04-03T10:01:01.760080",
   "sources": {
-    "daily_raw": 9,
-    "weekly_raw": 60,
-    "monthly_raw": 60
+    "daily_raw": 11,
+    "weekly_raw": 71,
+    "monthly_raw": 71
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Founder",
+        "title": "Marketing Manager",
         "count": 2
       },
       {
-        "title": "Senior Product Manager",
-        "count": 2
-      },
-      {
-        "title": "Community Manager",
+        "title": "Manager Wants",
         "count": 1
       },
       {
-        "title": "Senior Growth Strategy Manager",
+        "title": "Associate",
         "count": 1
       },
       {
-        "title": "@base (coinbase L2) Is A Social",
+        "title": "\u2022 Community",
+        "count": 1
+      },
+      {
+        "title": "Senior Data Engineer",
         "count": 1
       }
     ],
@@ -34,19 +34,19 @@
         "count": 7
       },
       {
+        "title": "Senior Product Manager",
+        "count": 4
+      },
+      {
         "title": "Community Manager",
         "count": 3
       },
       {
-        "title": "Senior Product Manager",
+        "title": "Marketing Manager",
         "count": 3
       },
       {
         "title": "Head Of Marketing",
-        "count": 3
-      },
-      {
-        "title": "Growth Manager",
         "count": 3
       }
     ],
@@ -56,19 +56,19 @@
         "count": 7
       },
       {
+        "title": "Senior Product Manager",
+        "count": 4
+      },
+      {
         "title": "Community Manager",
         "count": 3
       },
       {
-        "title": "Senior Product Manager",
+        "title": "Marketing Manager",
         "count": 3
       },
       {
         "title": "Head Of Marketing",
-        "count": 3
-      },
-      {
-        "title": "Growth Manager",
         "count": 3
       }
     ]
@@ -76,23 +76,23 @@
   "companies": {
     "daily": [
       {
-        "title": "XCARToz",
+        "title": "Scale",
         "count": 1
       },
       {
-        "title": "OKX",
+        "title": "sebiisb",
         "count": 1
       },
       {
-        "title": "VitaliiTrade",
+        "title": "EveyNFT",
         "count": 1
       },
       {
-        "title": "CurareCrypto",
+        "title": "NEAR",
         "count": 1
       },
       {
-        "title": "CultMarket",
+        "title": "Our",
         "count": 1
       }
     ],
