@@ -1,30 +1,22 @@
 {
-  "generated": "2026-04-03T10:01:01.760080",
+  "generated": "2026-04-06T10:00:55.893866",
   "sources": {
-    "daily_raw": 11,
-    "weekly_raw": 71,
-    "monthly_raw": 71
+    "daily_raw": 3,
+    "weekly_raw": 74,
+    "monthly_raw": 74
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Marketing Manager",
-        "count": 2
-      },
-      {
-        "title": "Manager Wants",
+        "title": "Avoiding Indians And Nigerians But Have Budgets Only",
         "count": 1
       },
       {
-        "title": "Associate",
+        "title": "Senior Product Designer",
         "count": 1
       },
       {
-        "title": "\u2022 Community",
-        "count": 1
-      },
-      {
-        "title": "Senior Data Engineer",
+        "title": "Community",
         "count": 1
       }
     ],
@@ -76,23 +68,15 @@
   "companies": {
     "daily": [
       {
-        "title": "Scale",
+        "title": "Indians",
         "count": 1
       },
       {
-        "title": "sebiisb",
+        "title": "Ondo",
         "count": 1
       },
       {
-        "title": "EveyNFT",
-        "count": 1
-      },
-      {
-        "title": "NEAR",
-        "count": 1
-      },
-      {
-        "title": "Our",
+        "title": "quroolarc",
         "count": 1
       }
     ],
