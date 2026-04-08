@@ -1,66 +1,74 @@
 {
-  "generated": "2026-04-06T10:00:55.893866",
+  "generated": "2026-04-08T10:01:15.738282",
   "sources": {
-    "daily_raw": 3,
-    "weekly_raw": 74,
-    "monthly_raw": 74
+    "daily_raw": 10,
+    "weekly_raw": 84,
+    "monthly_raw": 84
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Avoiding Indians And Nigerians But Have Budgets Only",
+        "title": "Mbassadors",
         "count": 1
       },
       {
-        "title": "Senior Product Designer",
+        "title": "Project Is A Developer",
         "count": 1
       },
       {
-        "title": "Community",
+        "title": "@backpack Is Bd",
+        "count": 1
+      },
+      {
+        "title": "\ud83d\udcbc Business Development",
+        "count": 1
+      },
+      {
+        "title": "Marketing Manager",
         "count": 1
       }
     ],
     "weekly": [
       {
         "title": "Founder",
-        "count": 7
+        "count": 8
       },
       {
         "title": "Senior Product Manager",
         "count": 4
       },
       {
-        "title": "Community Manager",
-        "count": 3
-      },
-      {
         "title": "Marketing Manager",
+        "count": 4
+      },
+      {
+        "title": "Product Manager",
         "count": 3
       },
       {
-        "title": "Head Of Marketing",
+        "title": "Community Manager",
         "count": 3
       }
     ],
     "monthly": [
       {
         "title": "Founder",
-        "count": 7
+        "count": 8
       },
       {
         "title": "Senior Product Manager",
         "count": 4
       },
       {
-        "title": "Community Manager",
-        "count": 3
-      },
-      {
         "title": "Marketing Manager",
+        "count": 4
+      },
+      {
+        "title": "Product Manager",
         "count": 3
       },
       {
-        "title": "Head Of Marketing",
+        "title": "Community Manager",
         "count": 3
       }
     ]
@@ -68,15 +76,23 @@
   "companies": {
     "daily": [
       {
-        "title": "Indians",
+        "title": "Rise",
         "count": 1
       },
       {
-        "title": "Ondo",
+        "title": "Kinem",
         "count": 1
       },
       {
-        "title": "quroolarc",
+        "title": "ImDenixSol",
+        "count": 1
+      },
+      {
+        "title": "remoteornothing",
+        "count": 1
+      },
+      {
+        "title": "NikithaAnnam",
         "count": 1
       }
     ],
@@ -90,15 +106,15 @@
         "count": 3
       },
       {
+        "title": "NikithaAnnam",
+        "count": 3
+      },
+      {
         "title": "pionex",
         "count": 3
       },
       {
         "title": "HashMaskGlobal",
-        "count": 2
-      },
-      {
-        "title": "DuongDjango",
         "count": 2
       }
     ],
@@ -112,15 +128,15 @@
         "count": 3
       },
       {
+        "title": "NikithaAnnam",
+        "count": 3
+      },
+      {
         "title": "pionex",
         "count": 3
       },
       {
         "title": "HashMaskGlobal",
-        "count": 2
-      },
-      {
-        "title": "DuongDjango",
         "count": 2
       }
     ]
