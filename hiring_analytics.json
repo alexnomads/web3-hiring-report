@@ -1,30 +1,30 @@
 {
-  "generated": "2026-04-09T10:01:01.422897",
+  "generated": "2026-04-10T10:01:02.445336",
   "sources": {
-    "daily_raw": 5,
-    "weekly_raw": 89,
-    "monthly_raw": 89
+    "daily_raw": 11,
+    "weekly_raw": 100,
+    "monthly_raw": 100
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Freelance Ui/ux Designer",
-        "count": 1
-      },
-      {
-        "title": "Cross Board",
-        "count": 1
-      },
-      {
-        "title": "Growth Manager",
-        "count": 1
+        "title": "Community Manager",
+        "count": 2
       },
       {
         "title": "Marketing Manager",
         "count": 1
       },
       {
-        "title": "We're A Cmo",
+        "title": "Marketers Demether Continues",
+        "count": 1
+      },
+      {
+        "title": "Visual Artists",
+        "count": 1
+      },
+      {
+        "title": "Hands-on Infrastructure Engineer",
         "count": 1
       }
     ],
@@ -35,19 +35,19 @@
       },
       {
         "title": "Marketing Manager",
+        "count": 6
+      },
+      {
+        "title": "Community Manager",
+        "count": 5
+      },
+      {
+        "title": "Growth Manager",
         "count": 5
       },
       {
         "title": "Senior Product Manager",
         "count": 4
-      },
-      {
-        "title": "Growth Manager",
-        "count": 4
-      },
-      {
-        "title": "Product Manager",
-        "count": 3
       }
     ],
     "monthly": [
@@ -57,42 +57,42 @@
       },
       {
         "title": "Marketing Manager",
+        "count": 6
+      },
+      {
+        "title": "Community Manager",
+        "count": 5
+      },
+      {
+        "title": "Growth Manager",
         "count": 5
       },
       {
         "title": "Senior Product Manager",
         "count": 4
-      },
-      {
-        "title": "Growth Manager",
-        "count": 4
-      },
-      {
-        "title": "Product Manager",
-        "count": 3
       }
     ]
   },
   "companies": {
     "daily": [
       {
-        "title": "orpheuskaze",
+        "title": "DavisonKingsley",
         "count": 1
       },
       {
-        "title": "EosTalent",
+        "title": "Nitashaberry",
         "count": 1
       },
       {
-        "title": "Yellow",
+        "title": "DemetherDeFi",
         "count": 1
       },
       {
-        "title": "NikithaAnnam",
+        "title": "awalkadayart",
         "count": 1
       },
       {
-        "title": "Mey",
+        "title": "InjectiveLabs",
         "count": 1
       }
     ],
