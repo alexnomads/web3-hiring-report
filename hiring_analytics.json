@@ -1,30 +1,30 @@
 {
-  "generated": "2026-04-13T10:01:01.547656",
+  "generated": "2026-04-14T10:01:04.651656",
   "sources": {
-    "daily_raw": 6,
-    "weekly_raw": 106,
-    "monthly_raw": 106
+    "daily_raw": 9,
+    "weekly_raw": 115,
+    "monthly_raw": 115
   },
   "job_titles": {
     "daily": [
       {
-        "title": "\ud83d\udc49a Designer",
+        "title": "Backend Engineer",
         "count": 1
       },
       {
-        "title": "Head Of Growth",
+        "title": "Senior Performance Marketing Manager",
         "count": 1
       },
       {
-        "title": "Co-founder",
+        "title": "Arsonist Your Fire Safety Consultant",
         "count": 1
       },
       {
-        "title": "- Product Design",
+        "title": "Senior Backend Engineer",
         "count": 1
       },
       {
-        "title": "[hiring] We're Recruiting",
+        "title": "Chief",
         "count": 1
       }
     ],
@@ -76,28 +76,32 @@
   "companies": {
     "daily": [
       {
-        "title": "useBaseConnect",
-        "count": 1
-      },
-      {
-        "title": "InverseFinance",
-        "count": 1
-      },
-      {
-        "title": "SuperteamAE",
-        "count": 1
-      },
-      {
         "title": "EveyNFT",
+        "count": 2
+      },
+      {
+        "title": "arcanedotbuild",
         "count": 1
       },
       {
-        "title": "polybacktest",
+        "title": "virtualstaffsa",
+        "count": 1
+      },
+      {
+        "title": "cydelmg",
+        "count": 1
+      },
+      {
+        "title": "CoWSwap",
         "count": 1
       }
     ],
     "weekly": [
       {
+        "title": "EveyNFT",
+        "count": 4
+      },
+      {
         "title": "NikithaAnnam",
         "count": 4
       },
@@ -110,16 +114,16 @@
         "count": 3
       },
       {
-        "title": "pionex",
+        "title": "zhannamanzyk",
         "count": 3
-      },
-      {
-        "title": "EveyNFT",
-        "count": 2
       }
     ],
     "monthly": [
       {
+        "title": "EveyNFT",
+        "count": 4
+      },
+      {
         "title": "NikithaAnnam",
         "count": 4
       },
@@ -132,12 +136,8 @@
         "count": 3
       },
       {
-        "title": "pionex",
+        "title": "zhannamanzyk",
         "count": 3
-      },
-      {
-        "title": "EveyNFT",
-        "count": 2
       }
     ]
   }
