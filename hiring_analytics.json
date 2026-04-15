@@ -1,37 +1,37 @@
 {
-  "generated": "2026-04-14T10:01:04.651656",
+  "generated": "2026-04-15T10:01:03.348474",
   "sources": {
-    "daily_raw": 9,
-    "weekly_raw": 115,
-    "monthly_raw": 115
+    "daily_raw": 10,
+    "weekly_raw": 125,
+    "monthly_raw": 125
   },
   "job_titles": {
     "daily": [
       {
-        "title": "Backend Engineer",
+        "title": "Senior Full Stack Developer",
         "count": 1
       },
       {
-        "title": "Senior Performance Marketing Manager",
+        "title": "Senior Infrastructure Engineer",
         "count": 1
       },
       {
-        "title": "Arsonist Your Fire Safety Consultant",
+        "title": "Not Cold Outreach - But Working Incoming",
         "count": 1
       },
       {
-        "title": "Senior Backend Engineer",
+        "title": "Real Opportunities",
         "count": 1
       },
       {
-        "title": "Chief",
+        "title": "Founder",
         "count": 1
       }
     ],
     "weekly": [
       {
         "title": "Founder",
-        "count": 8
+        "count": 9
       },
       {
         "title": "Marketing Manager",
@@ -42,18 +42,18 @@
         "count": 5
       },
       {
-        "title": "Growth Manager",
+        "title": "Chief",
         "count": 5
       },
       {
-        "title": "Senior Product Manager",
-        "count": 4
+        "title": "Growth Manager",
+        "count": 5
       }
     ],
     "monthly": [
       {
         "title": "Founder",
-        "count": 8
+        "count": 9
       },
       {
         "title": "Marketing Manager",
@@ -64,41 +64,45 @@
         "count": 5
       },
       {
-        "title": "Growth Manager",
+        "title": "Chief",
         "count": 5
       },
       {
-        "title": "Senior Product Manager",
-        "count": 4
+        "title": "Growth Manager",
+        "count": 5
       }
     ]
   },
   "companies": {
     "daily": [
       {
-        "title": "EveyNFT",
-        "count": 2
-      },
-      {
-        "title": "arcanedotbuild",
+        "title": "MidasRWA",
         "count": 1
       },
       {
-        "title": "virtualstaffsa",
+        "title": "BitGo",
         "count": 1
       },
       {
-        "title": "cydelmg",
+        "title": "MIKS",
         "count": 1
       },
       {
-        "title": "CoWSwap",
+        "title": "rightfitso",
+        "count": 1
+      },
+      {
+        "title": "zorkary",
         "count": 1
       }
     ],
     "weekly": [
       {
         "title": "EveyNFT",
+        "count": 5
+      },
+      {
+        "title": "zhannamanzyk",
         "count": 4
       },
       {
@@ -111,16 +115,16 @@
       },
       {
         "title": "ChaudharyjiTec4",
-        "count": 3
-      },
-      {
-        "title": "zhannamanzyk",
         "count": 3
       }
     ],
     "monthly": [
       {
         "title": "EveyNFT",
+        "count": 5
+      },
+      {
+        "title": "zhannamanzyk",
         "count": 4
       },
       {
@@ -133,10 +137,6 @@
       },
       {
         "title": "ChaudharyjiTec4",
-        "count": 3
-      },
-      {
-        "title": "zhannamanzyk",
         "count": 3
       }
     ]
