@@ -553,5 +553,7 @@
   "marketing_count": 3,
   "scraped_at": "2026-04-15T11:01:03.177752+00:00",
   "filter": "48 hours CET",
-  "rejected_48h": 192
+  "rejected_48h": 192,
+  "posts": [],
+  "generated": "2026-04-27T17:38:11.619212"
 }
