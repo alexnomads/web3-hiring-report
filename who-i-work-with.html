@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who I Work With — Alessandro Capezza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700;1,9..144,900&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#f8f6f1;
+  --black:#0d0c0a;
+  --green:#9fe870;
+  --green-deep:#163300;
+  --muted:#7a7670;
+  --border:rgba(13,12,10,0.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--black);font-family:'Instrument Sans',sans-serif;font-weight:400;overflow-x:hidden;}
+*{cursor:none!important;}
+.cursor{position:fixed;width:10px;height:10px;background:var(--green);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s;}
+.cursor.big{width:40px;height:40px;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3.5rem;mix-blend-mode:difference;}
+.nav-logo{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:var(--white);text-decoration:none;letter-spacing:-0.02em;}
+.nav-back{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;color:var(--white);display:flex;align-items:center;gap:0.5rem;transition:opacity 0.2s;}
+.nav-back:hover{opacity:0.6;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--black);display:flex;flex-direction:column;justify-content:space-between;padding:0 3.5rem 3.5rem;position:relative;overflow:hidden;}
+.hero-track{position:absolute;top:0;left:0;right:0;display:flex;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,246,241,0.2);z-index:1;}
+.hero-track span{flex:1;padding:1.5rem 3.5rem;border-right:1px solid rgba(248,246,241,0.07);white-space:nowrap;}
+.hero-track span.active{color:var(--green);}
+.hero-main{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;flex:1;padding-top:8rem;position:relative;z-index:1;}
+.hero-tag{display:inline-block;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;border:1px solid rgba(159,232,112,0.3);color:var(--green);padding:0.3rem 0.9rem;margin-bottom:2rem;}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(3rem,7vw,8rem);font-weight:900;line-height:0.9;letter-spacing:-0.04em;color:var(--white);margin-bottom:2.5rem;}
+.hero-title em{font-style:italic;color:var(--green);}
+.hero-sub{font-size:1rem;line-height:1.75;color:rgba(248,246,241,0.5);max-width:400px;margin-bottom:3rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;background:var(--green);color:var(--black);padding:1rem 2rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;border:none;text-decoration:none;white-space:nowrap;transition:background 0.2s;}
+.btn-primary:hover{background:#7de050;}
+.hero-right{display:flex;flex-direction:column;gap:0;}
+.hero-profile-peek{border-top:1px solid rgba(248,246,241,0.07);padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.hero-profile-peek:last-child{border-bottom:1px solid rgba(248,246,241,0.07);}
+.peek-num{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:900;letter-spacing:-0.04em;color:rgba(248,246,241,0.12);flex-shrink:0;}
+.peek-label{font-family:'Fraunces',serif;font-size:0.98rem;font-weight:700;letter-spacing:-0.01em;color:rgba(248,246,241,0.4);flex:1;}
+.peek-tag{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);border:1px solid rgba(159,232,112,0.2);padding:0.2rem 0.6rem;flex-shrink:0;}
+.hero-scroll{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,246,241,0.25);display:flex;align-items:center;gap:0.8rem;padding-top:3rem;position:relative;z-index:1;}
+.hero-scroll::before{content:'';display:block;width:1.5rem;height:1px;background:currentColor;}
+
+/* ── MARQUEE ── */
+.marquee-strip{background:var(--green);overflow:hidden;padding:0.85rem 0;}
+.marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:marquee 22s linear infinite;width:max-content;}
+.marquee-track span{font-family:'Fraunces',serif;font-size:0.85rem;font-weight:700;font-style:italic;color:var(--black);letter-spacing:-0.01em;}
+.marquee-track .dot{color:var(--green-deep);}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── SHARED ── */
+.section-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.section-label::before{content:'';display:block;width:2rem;height:1px;background:currentColor;}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,4rem);font-weight:900;line-height:0.95;letter-spacing:-0.04em;margin-bottom:1rem;}
+.section-title em{font-style:italic;color:var(--green);}
+
+/* ── PROFILE SECTIONS ── */
+/* Each profile alternates white / dark */
+.profile{padding:7rem 3.5rem;border-top:1px solid var(--border);position:relative;overflow:hidden;}
+.profile.dark{background:var(--black);border-top:1px solid #1a1917;}
+.profile.dark .section-label{color:rgba(248,246,241,0.25);}
+.profile.dark .section-label::before{background:rgba(248,246,241,0.25);}
+.profile.dark .profile-title{color:var(--white);}
+.profile.dark .profile-num{color:rgba(248,246,241,0.04);}
+.profile.dark .profile-desc p{color:rgba(248,246,241,0.45);}
+.profile.dark .profile-desc p strong{color:var(--white);}
+.profile.dark .signal-item{border-color:rgba(248,246,241,0.07);color:rgba(248,246,241,0.55);}
+.profile.dark .signal-item::before{color:var(--green);}
+.profile.dark .profile-outcomes li{color:rgba(248,246,241,0.5);border-color:rgba(248,246,241,0.07);}
+.profile.dark .profile-outcomes li::before{background:var(--green);}
+.profile.dark .profile-tag{border-color:rgba(248,246,241,0.12);color:rgba(248,246,241,0.35);}
+.profile.dark .profile-cta{background:var(--green);color:var(--black);}
+.profile.dark .profile-cta:hover{background:#7de050;}
+
+.profile-bg-num{
+  position:absolute;right:-1rem;top:50%;transform:translateY(-50%);
+  font-family:'Fraunces',serif;font-size:28rem;font-weight:900;font-style:italic;
+  letter-spacing:-0.06em;line-height:1;color:transparent;pointer-events:none;
+  -webkit-text-stroke:1px rgba(13,12,10,0.04);
+}
+.profile.dark .profile-bg-num{-webkit-text-stroke:1px rgba(248,246,241,0.04);}
+
+.profile-inner{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;position:relative;z-index:1;}
+.profile-inner.reverse{direction:rtl;}
+.profile-inner.reverse > *{direction:ltr;}
+
+.profile-left{}
+.profile-num{font-family:'Fraunces',serif;font-size:6rem;font-weight:900;letter-spacing:-0.06em;line-height:1;color:rgba(13,12,10,0.06);margin-bottom:-1rem;transition:color 0.3s;}
+.profile-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;line-height:1.0;letter-spacing:-0.03em;margin-bottom:0.5rem;}
+.profile-title em{font-style:italic;color:var(--green);}
+.profile-role{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
+.profile.dark .profile-role{color:rgba(248,246,241,0.25);}
+.profile-desc p{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:1.2rem;}
+.profile-desc p strong{color:var(--black);font-weight:500;}
+.profile-tag{display:inline-block;padding:0.3rem 0.8rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);margin-top:0.5rem;}
+.profile-cta{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--black);color:var(--white);
+  padding:1rem 2rem;font-size:0.75rem;letter-spacing:0.1em;
+  text-transform:uppercase;font-weight:500;
+  border:none;text-decoration:none;margin-top:2rem;
+  transition:background 0.2s;
+}
+.profile-cta:hover{background:var(--green-deep);}
+
+.profile-right{}
+/* Signals — "I feel like..." */
+.signals-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.profile.dark .signals-label{color:rgba(248,246,241,0.25);}
+.signal-item{
+  display:block;font-size:0.95rem;line-height:1.6;
+  color:var(--muted);padding:1rem 0 1rem 1.5rem;
+  border-bottom:1px solid var(--border);
+  position:relative;transition:color 0.2s;
+}
+.signal-item:first-of-type{border-top:1px solid var(--border);}
+.signal-item::before{
+  content:'"';position:absolute;left:0;top:1rem;
+  font-family:'Fraunces',serif;font-size:1.1rem;font-style:italic;font-weight:700;
+  color:var(--green-deep);
+}
+
+/* Outcomes */
+.outcomes-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:2.5rem;margin-bottom:1rem;}
+.profile.dark .outcomes-label{color:rgba(248,246,241,0.25);}
+.profile-outcomes{list-style:none;}
+.profile-outcomes li{
+  font-size:0.88rem;line-height:1.6;
+  color:var(--muted);padding:0.65rem 0 0.65rem 1.2rem;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.profile-outcomes li:first-child{border-top:1px solid var(--border);}
+.profile-outcomes li::before{
+  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:5px;height:5px;border-radius:50%;background:var(--green-deep);
+}
+
+/* ── NOT FOR STRIP ── */
+.notfor{background:var(--black);padding:4rem 3.5rem;border-top:1px solid #1a1917;display:flex;align-items:center;gap:4rem;flex-wrap:wrap;}
+.notfor-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,246,241,0.25);flex-shrink:0;}
+.notfor-items{display:flex;flex-wrap:wrap;gap:0.75rem;flex:1;}
+.notfor-item{font-size:0.78rem;color:rgba(248,246,241,0.3);padding:0.3rem 0.9rem;border:1px solid rgba(248,246,241,0.08);text-decoration:line-through;opacity:0.6;}
+
+/* ── FINAL CTA ── */
+.final-cta{background:var(--green);padding:7rem 3.5rem;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;}
+.final-cta-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(22,51,0,0.5);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.final-cta-label::before{content:'';display:block;width:2rem;height:1px;background:rgba(22,51,0,0.4);}
+.final-cta-title{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,4rem);font-weight:900;line-height:0.95;letter-spacing:-0.04em;color:var(--black);}
+.final-cta-title em{font-style:italic;}
+.final-cta-sub{font-size:0.95rem;line-height:1.75;color:rgba(13,12,10,0.55);margin-top:1rem;max-width:420px;}
+.final-cta-right{display:flex;flex-direction:column;align-items:center;gap:0.75rem;flex-shrink:0;}
+.btn-cta-dark{display:inline-flex;align-items:center;gap:0.6rem;background:var(--green-deep);color:var(--green);padding:1.2rem 2.5rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;border:none;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;}
+.btn-cta-dark:hover{opacity:0.85;}
+.cta-note{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(13,12,10,0.4);}
+
+/* ── FOOTER ── */
+footer{padding:2rem 3.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+footer p{font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.foot-links{display:flex;gap:2rem;list-style:none;}
+.foot-links a{font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color 0.2s;}
+.foot-links a:hover{color:var(--green-deep);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.hero-tag,.hero-title,.hero-sub,.btn-primary{animation:fadeUp 0.8s ease forwards;opacity:0;}
+.hero-tag{animation-delay:0.05s;}
+.hero-title{animation-delay:0.15s;}
+.hero-sub{animation-delay:0.25s;}
+.btn-primary{animation-delay:0.35s;}
+.hero-right{animation:fadeUp 0.8s ease 0.2s forwards;opacity:0;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem;mix-blend-mode:normal;background:var(--black);}
+  .nav-logo,.nav-back{color:var(--white);}
+  .hero{padding:0 1.5rem 2.5rem;}
+  .hero-track span{padding:1.2rem 1.5rem;}
+  .hero-main{grid-template-columns:1fr;padding-top:6rem;gap:3rem;}
+  .profile{padding:5rem 1.5rem;}
+  .profile-inner,.profile-inner.reverse{grid-template-columns:1fr;gap:3rem;direction:ltr;}
+  .profile-bg-num{display:none;}
+  .notfor{padding:3rem 1.5rem;flex-direction:column;align-items:flex-start;gap:1.5rem;}
+  .final-cta{grid-template-columns:1fr;gap:2.5rem;padding:5rem 1.5rem;}
+  footer{flex-direction:column;gap:1.5rem;padding:2rem 1.5rem;}
+  *{cursor:auto!important;}
+  .cursor{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Alessandro Capezza</a>
+  <a href="index.html" class="nav-back">← Back to coaching</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-track">
+    <span>AI Career Coaching</span>
+    <span>5 Profiles</span>
+    <span class="active">Do you recognise yourself? ↗</span>
+  </div>
+
+  <div class="hero-main">
+    <div class="hero-left">
+      <div class="hero-tag">Who This Is For</div>
+      <h1 class="hero-title">If you see<br>yourself <em>here,</em><br>we should talk.</h1>
+      <p class="hero-sub">Five profiles. Five different situations. One common thread — AI is changing the game and you don't want to be caught without a plan.</p>
+      <a href="#profiles" class="btn-primary">See the profiles ↓</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-profile-peek">
+        <span class="peek-num">01</span>
+        <span class="peek-label">The Experienced Professional</span>
+        <span class="peek-tag">Most common</span>
+      </div>
+      <div class="hero-profile-peek">
+        <span class="peek-num">02</span>
+        <span class="peek-label">The SMB Owner</span>
+        <span class="peek-tag">High urgency</span>
+      </div>
+      <div class="hero-profile-peek">
+        <span class="peek-num">03</span>
+        <span class="peek-label">The Sales Pro</span>
+        <span class="peek-tag">Fast ROI</span>
+      </div>
+      <div class="hero-profile-peek">
+        <span class="peek-num">04</span>
+        <span class="peek-label">The Freelancer</span>
+        <span class="peek-tag">Urgent pivot</span>
+      </div>
+      <div class="hero-profile-peek">
+        <span class="peek-num">05</span>
+        <span class="peek-label">The Career Changer</span>
+        <span class="peek-tag">Positioning focus</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">Scroll to find your profile</div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Mid-Career Professionals</span><span class="dot">·</span>
+    <span>SMB Owners</span><span class="dot">·</span>
+    <span>Sales Teams</span><span class="dot">·</span>
+    <span>Freelancers</span><span class="dot">·</span>
+    <span>Career Changers</span><span class="dot">·</span>
+    <span>29€ Diagnostic</span><span class="dot">·</span>
+    <span>Orchestrate Don't Compete</span><span class="dot">·</span>
+    <span>Mid-Career Professionals</span><span class="dot">·</span>
+    <span>SMB Owners</span><span class="dot">·</span>
+    <span>Sales Teams</span><span class="dot">·</span>
+    <span>Freelancers</span><span class="dot">·</span>
+    <span>Career Changers</span><span class="dot">·</span>
+    <span>29€ Diagnostic</span><span class="dot">·</span>
+    <span>Orchestrate Don't Compete</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- ── PROFILE 01 — white ── -->
+<section class="profile" id="profiles">
+  <div class="profile-bg-num">01</div>
+  <div class="profile-inner reveal">
+    <div class="profile-left">
+      <div class="profile-num">01</div>
+      <div class="section-label">Marketing · Product · Customer Service</div>
+      <h2 class="profile-title">The Experienced<br><em>Professional</em></h2>
+      <div class="profile-role">5–15 years experience · marketing, product, customer service</div>
+      <div class="profile-desc">
+        <p>You're a marketing manager who's built campaigns from scratch, a product specialist who knows the roadmap inside out, or a customer service lead whose team runs on your systems. You're good at your job — and that's exactly why AI feels threatening. The skills that got you here are the ones being automated first.</p>
+        <p><strong>AI isn't replacing your judgment or your relationships. But it is replacing the tasks that used to prove your value.</strong> The professionals pulling ahead right now are the ones who've figured out how to make AI amplify what they do — not the ones who are waiting to see what happens.</p>
+      </div>
+      <span class="profile-tag">Most common profile</span>
+      <br>
+      <a href="mailto:aicoachalex@gmail.com?subject=Diagnostic Call - Experienced Professional" class="profile-cta">Book your diagnostic — 29€ →</a>
+    </div>
+    <div class="profile-right">
+      <div class="signals-label">You find yourself thinking...</div>
+      <span class="signal-item">In marketing: my briefs, my reports, my campaigns — AI is doing versions of all of it</span>
+      <span class="signal-item">In product: junior PMs are shipping faster because of AI tools I haven't fully adopted yet</span>
+      <span class="signal-item">In customer service: automation is handling more tickets — I need to show I'm more than the ticket queue</span>
+      <span class="signal-item">I know I need a strategy — I just don't know what it looks like for my specific role</span>
+
+      <div class="outcomes-label">What you'll leave with</div>
+      <ul class="profile-outcomes">
+        <li>A role-specific map of what AI is actually replacing vs what it can't touch in your field</li>
+        <li>The 2–3 AI skills that move the needle for your exact discipline — not generic prompting advice</li>
+        <li>A repositioning narrative that makes you the AI-fluent expert your team and employer needs</li>
+        <li>Concrete tools you can integrate into your current workflow this week</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROFILE 02 — dark ── -->
+<section class="profile dark">
+  <div class="profile-bg-num">02</div>
+  <div class="profile-inner reverse reveal">
+    <div class="profile-left">
+      <div class="profile-num">02</div>
+      <div class="section-label">Founders · Agency Owners · SMBs</div>
+      <h2 class="profile-title">The SMB Owner<br>or <em>Founder</em></h2>
+      <div class="profile-role">Small business · agency · independent operation</div>
+      <div class="profile-desc">
+        <p>You run a small business or agency. You hear about AI saving other operators 20 hours a week — but every tool you try feels half-baked, every consultant sells a deck instead of results, and you're still doing the same tasks manually you were doing two years ago.</p>
+        <p><strong>You don't need theory. You need someone who's actually integrated this stuff</strong> and can tell you exactly where to start without wasting three months figuring it out yourself.</p>
+      </div>
+      <span class="profile-tag">High urgency</span>
+      <br>
+      <a href="mailto:aicoachalex@gmail.com?subject=Diagnostic Call - SMB Owner" class="profile-cta">Book your diagnostic — 29€ →</a>
+    </div>
+    <div class="profile-right">
+      <div class="signals-label">You find yourself thinking...</div>
+      <span class="signal-item">I've tried ChatGPT — it's useful but I'm not using it systematically</span>
+      <span class="signal-item">I want to automate repetitive work but don't know what to prioritise</span>
+      <span class="signal-item">My competitors are moving fast and I can't afford to fall behind</span>
+      <span class="signal-item">I can't afford to hire more people — I need to 10x what I already have</span>
+
+      <div class="outcomes-label">What you'll leave with</div>
+      <ul class="profile-outcomes">
+        <li>The top 3 automation wins specific to your business type</li>
+        <li>A stack recommendation — only the tools actually worth your time</li>
+        <li>A 30-day integration plan that doesn't require technical knowledge</li>
+        <li>A framework to evaluate every new AI tool before you waste time on it</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROFILE 03 — white ── -->
+<section class="profile">
+  <div class="profile-bg-num">03</div>
+  <div class="profile-inner reveal">
+    <div class="profile-left">
+      <div class="profile-num">03</div>
+      <div class="section-label">Sales · Business Development · Consulting</div>
+      <h2 class="profile-title">The Sales Pro<br>Wanting an <em>Edge</em></h2>
+      <div class="profile-role">Account exec · BDR · consultant · advisor</div>
+      <div class="profile-desc">
+        <p>You're good at what you do. But you're watching the top performers on your team use AI to prospect smarter, personalise faster, research deeper, and close more — and the gap is widening every quarter.</p>
+        <p><strong>You have the instinct and the relationships. You just need the right tools on top of them.</strong> Not generic prompts — a real workflow built around how you actually sell.</p>
+      </div>
+      <span class="profile-tag">Fast ROI profile</span>
+      <br>
+      <a href="mailto:aicoachalex@gmail.com?subject=Diagnostic Call - Sales Pro" class="profile-cta">Book your diagnostic — 29€ →</a>
+    </div>
+    <div class="profile-right">
+      <div class="signals-label">You find yourself thinking...</div>
+      <span class="signal-item">I want to use AI for outreach without sounding like a bot</span>
+      <span class="signal-item">I need to stand out as AI-fluent to my clients and management</span>
+      <span class="signal-item">The best reps are closing more — I want to know exactly how</span>
+      <span class="signal-item">My research and prep takes too long — there has to be a better way</span>
+
+      <div class="outcomes-label">What you'll leave with</div>
+      <ul class="profile-outcomes">
+        <li>An AI-powered prospecting workflow tailored to your specific sales motion</li>
+        <li>Prompt frameworks for personalised outreach that doesn't read as generated</li>
+        <li>A pre-call research system that takes 5 minutes instead of 45</li>
+        <li>How to position your AI fluency as a differentiator with clients</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROFILE 04 — dark ── -->
+<section class="profile dark">
+  <div class="profile-bg-num">04</div>
+  <div class="profile-inner reverse reveal">
+    <div class="profile-left">
+      <div class="profile-num">04</div>
+      <div class="section-label">Freelancers · Consultants · Independents</div>
+      <h2 class="profile-title">The Freelancer<br>Under <em>Pressure</em></h2>
+      <div class="profile-role">Independent operator · solopreneur · contractor</div>
+      <div class="profile-desc">
+        <p>Your clients are starting to ask whether AI can do what you do. Some have already cut your hours, reduced your scope, or brought work back in-house using tools that cost €30 a month. The question is no longer hypothetical.</p>
+        <p><strong>You need to reframe your value and build an AI-augmented service</strong> before clients make the decision for you. The good news: the freelancers winning right now aren't the ones who ignore AI — they're the ones who use it to deliver more than any tool alone ever could.</p>
+      </div>
+      <span class="profile-tag">Urgent pivot needed</span>
+      <br>
+      <a href="mailto:aicoachalex@gmail.com?subject=Diagnostic Call - Freelancer" class="profile-cta">Book your diagnostic — 29€ →</a>
+    </div>
+    <div class="profile-right">
+      <div class="signals-label">You find yourself thinking...</div>
+      <span class="signal-item">Clients are pushing back on my rates citing AI tools</span>
+      <span class="signal-item">I need to show I'm adding value that AI can't replicate alone</span>
+      <span class="signal-item">I want to use AI to do more work — not lose work to it</span>
+      <span class="signal-item">I'm not sure how to talk about AI with clients without underselling myself</span>
+
+      <div class="outcomes-label">What you'll leave with</div>
+      <ul class="profile-outcomes">
+        <li>A clear articulation of your human-plus-AI value proposition</li>
+        <li>How to restructure your service offering to justify and increase your rates</li>
+        <li>AI tools that make you 3× faster without reducing quality</li>
+        <li>Scripts for the "can't AI do this?" conversation with clients</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROFILE 05 — white ── -->
+<section class="profile">
+  <div class="profile-bg-num">05</div>
+  <div class="profile-inner reveal">
+    <div class="profile-left">
+      <div class="profile-num">05</div>
+      <div class="section-label">Any Industry · Actively Pivoting</div>
+      <h2 class="profile-title">The Career<br><em>Changer</em></h2>
+      <div class="profile-role">Active job seeker · career pivoter · rebrander</div>
+      <div class="profile-desc">
+        <p>You've decided to make a move — new role, new industry, or new positioning. You want to land as an AI-era professional, not just someone job hunting. The next opportunity needs to reflect the future, not your last job title.</p>
+        <p><strong>You have transferable skills. You just need help framing them for a market</strong> where "AI fluency" is increasingly the difference between getting the interview and getting ignored.</p>
+      </div>
+      <span class="profile-tag">Positioning focus</span>
+      <br>
+      <a href="mailto:aicoachalex@gmail.com?subject=Diagnostic Call - Career Changer" class="profile-cta">Book your diagnostic — 29€ →</a>
+    </div>
+    <div class="profile-right">
+      <div class="signals-label">You find yourself thinking...</div>
+      <span class="signal-item">I'm updating my CV and LinkedIn but don't know what to highlight</span>
+      <span class="signal-item">I want employers or clients to see me as forward-looking</span>
+      <span class="signal-item">I have the experience — I just don't know how to frame it for now</span>
+      <span class="signal-item">Everyone says "learn AI" but nobody tells me what that means for my specific background</span>
+
+      <div class="outcomes-label">What you'll leave with</div>
+      <ul class="profile-outcomes">
+        <li>A rewritten professional narrative built for the AI era</li>
+        <li>The exact skills to highlight, add, and drop from your positioning</li>
+        <li>A LinkedIn and CV strategy that signals AI fluency to the right employers</li>
+        <li>Clarity on which roles and sectors are actively rewarding your background right now</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOT FOR ── -->
+<div class="notfor">
+  <span class="notfor-label">Not the right fit if you're</span>
+  <div class="notfor-items">
+    <span class="notfor-item">Looking for a quick CV fix</span>
+    <span class="notfor-item">Entry-level or just starting out</span>
+    <span class="notfor-item">Expecting overnight results</span>
+    <span class="notfor-item">Wanting generic career advice</span>
+    <span class="notfor-item">Not willing to do the work</span>
+  </div>
+</div>
+
+<!-- ── FINAL CTA ── -->
+<div class="final-cta">
+  <div>
+    <div class="final-cta-label">Ready?</div>
+    <h2 class="final-cta-title reveal">Still not sure<br>which profile fits?<br><em>That's the call.</em></h2>
+    <p class="final-cta-sub reveal">In 30 minutes we'll figure out exactly where you are, what's at stake, and what to do next. Whether you continue working with me or not — you'll leave with a clear map.</p>
+  </div>
+  <div class="final-cta-right reveal">
+    <a href="mailto:aicoachalex@gmail.com?subject=Diagnostic Call" class="btn-cta-dark">Book Diagnostic — 29€ →</a>
+    <span class="cta-note">30 minutes · immediate clarity · not a sales pitch</span>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2025 Alessandro Capezza · AI Era Career Coaching</p>
+  <ul class="foot-links">
+    <li><a href="https://linkedin.com/in/alessandrocapezza" target="_blank">LinkedIn</a></li>
+    <li><a href="https://x.com/alexNomads" target="_blank">X / Twitter</a></li>
+    <li><a href="mailto:aicoachalex@gmail.com">Email</a></li>
+  </ul>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
