@@ -1,0 +1,39 @@
+name: Deploy Web3 Hiring Report to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 1 * * *'  # Daily at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
