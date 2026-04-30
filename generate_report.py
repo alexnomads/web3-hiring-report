@@ -4,9 +4,17 @@ import json
 import re
 import sys
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+from email.utils import parsedate_to_datetime
 
 sys.stdout.reconfigure(encoding='utf-8')
+
+# Date is determined at runtime from the RAW_FILE name (e.g. web3_hiring_posts_2026-04-30.json)
+def _get_report_date():
+    """Extract YYYY-MM-DD from the raw file filename."""
+    base = os.path.basename(RAW_FILE)
+    m = re.search(r'(\d{4}-\d{2}-\d{2})', base)
+    return m.group(1) if m else 'unknown'
 
 RAW_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_posts_2026-04-30.json')
 REPORT_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_report_2026-04-30.html')
@@ -117,15 +125,40 @@ def extract_company(text, username):
                 return company
     return username
 
+def parse_created_at(created_at_str):
+    """Parse Twitter createdAt format: 'Tue Apr 28 15:26:11 +0000 2026'"""
+    try:
+        return parsedate_to_datetime(created_at_str)
+    except Exception:
+        return None
+
 def process_data():
     with open(RAW_FILE, 'r', encoding='utf-8') as f:
         raw = json.load(f)
-    
+
     all_tweets = raw.get('all_tweets', [])
     results = []
     marketing_results = []
-    
+
+    # --- Time filter: only tweets from the last 30 hours ---
+    now_utc = datetime.now(timezone.utc)
+    cutoff = now_utc - timedelta(hours=30)
+    filtered_count = 0
+    excluded_count = 0
+
     for tweet in all_tweets:
+        created_at_str = tweet.get('createdAt', '')
+        if created_at_str:
+            tweet_dt = parse_created_at(created_at_str)
+            if tweet_dt and tweet_dt.tzinfo is None:
+                tweet_dt = tweet_dt.replace(tzinfo=timezone.utc)
+            if tweet_dt and tweet_dt < cutoff:
+                excluded_count += 1
+                continue
+        else:
+            excluded_count += 1
+            continue
+        filtered_count += 1
         text = tweet.get('text', '')
         if not text or len(text) < 20:
             continue
@@ -176,6 +209,8 @@ def process_data():
             })
     
     print(f"Total raw tweets: {len(all_tweets)}")
+    print(f"Tweets within 30h window: {filtered_count}")
+    print(f"Excluded (older than 30h): {excluded_count}")
     print(f"Filtered hiring posts: {len(results)}")
     print(f"Filtered marketing posts: {len(marketing_results)}")
     
@@ -193,7 +228,7 @@ def process_data():
 
 def generate_html(results, marketing_results):
     """Generate HTML report."""
-    date_str = "2026-04-30"
+    date_str = _get_report_date()
     verified_count = sum(1 for r in results if r.get('is_verified'))
     
     # Build opportunities section
