@@ -1,0 +1,46 @@
+name: Daily Web3 Hiring Report
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Run at 9:00 AM UTC every day (5:00 AM Europe/Madrid)
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  scrape-and-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 pandas
+      
+      - name: Run daily scraper
+        env:
+          TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN }}
+          TWITTER_CT0: ${{ secrets.TWITTER_CT0 }}
+        run: |
+          # The scraper will use bird_x from local skills folder
+          python web3-hiring-report/scraper_twitter_hiring.py
+      
+      - name: Generate HTML report
+        run: |
+          python web3-hiring-report/generate_report.py
+      
+      - name: Commit and push report
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if data changed
+          git add web3_hiring_posts_*.json web3_hiring_report_*.html
+          git commit -m "Daily report: $GITHUB_REF_NAME updated with fresh hiring tweets" || echo "No changes to commit"
+          
+          git push
