@@ -12,7 +12,16 @@ This script:
 
 import sys
 import os
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+# Fix Windows console encoding for emojis
+if sys.platform == "win32":
+    os.environ["PYTHONIOENCODING"] = "utf-8"
+    if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+        import io
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
 
 # Add last30days skill to path
 WORKSPACE = Path(__file__).parent.parent
@@ -20,8 +29,7 @@ SKILLS_PATH = WORKSPACE / "agents-experiment" / "skills" / "last30days-official"
 sys.path.insert(0, str(SKILLS_PATH))
 
 from pathlib import Path as LibPath
-from last30days.bird_x import search_x, is_bird_installed, get_bird_status
-from last30days.env import load_from_env_file
+from last30days.bird_x import search_x, is_bird_installed, get_bird_status, set_credentials
 
 def setup_credentials():
     """Load Twitter credentials from geopolitical-agent's cookies.env"""
@@ -51,15 +59,18 @@ def scrape_tweets():
     if not auth_token or not ct0:
         return None
     
+    # Inject credentials into bird_x
+    set_credentials(auth_token, ct0)
+    
     # Check bird is installed
     if not is_bird_installed():
         print("❌ Bird search is not installed or available")
         return None
     
-    print(f"✓ Twitter credentials loaded from {env_path}")
+    print(f"✓ Twitter credentials loaded")
     
-    today = "2026-05-04"  # Current date
-    cutoff_date = "2026-05-03"  # Yesterday for since: filter
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    yesterday = (datetime.now(timezone.utc) - timedelta(hours=30)).strftime("%Y-%m-%d")
     
     # Search queries for hiring tweets
     SEARCH_QUERIES = [
@@ -81,7 +92,7 @@ def scrape_tweets():
         print(f"\n🔍 Searching: {query}")
         
         # Use bird-search with date filter
-        query_with_date = f"{query} since:{cutoff_date}"
+        query_with_date = f"{query} since:{yesterday}"
         print(f"   Query: {query_with_date}")
         
         try:
@@ -154,7 +165,7 @@ def scrape_tweets():
             results.append(tweet)
     
     # Build output JSON
-    date_str = "2026-05-04"  # Today's date
+    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     
     output = {
         "date": date_str,

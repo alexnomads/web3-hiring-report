@@ -27,7 +27,6 @@ jobs:
           TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN }}
           TWITTER_CT0: ${{ secrets.TWITTER_CT0 }}
         run: |
-          # The scraper will use bird_x from local skills folder
           python web3-hiring-report/scraper_twitter_hiring.py
       
       - name: Generate HTML report

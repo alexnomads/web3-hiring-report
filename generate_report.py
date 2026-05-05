@@ -16,8 +16,10 @@ def _get_report_date():
     m = re.search(r'(\d{4}-\d{2}-\d{2})', base)
     return m.group(1) if m else 'unknown'
 
-RAW_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_posts_2026-04-30.json')
-REPORT_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_report_2026-04-30.html')
+# Use today's date dynamically
+TODAY = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+RAW_FILE = os.path.join(os.path.dirname(__file__), f'web3_hiring_posts_{TODAY}.json')
+REPORT_FILE = os.path.join(os.path.dirname(__file__), f'web3_hiring_report_{TODAY}.html')
 
 # Keywords that indicate hiring/job posts
 HIRING_KEYWORDS = [
