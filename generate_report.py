@@ -16,8 +16,21 @@ def _get_report_date():
     m = re.search(r'(\d{4}-\d{2}-\d{2})', base)
     return m.group(1) if m else 'unknown'
 
-RAW_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_posts_2026-05-06.json')
-REPORT_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_report_2026-05-06.html')
+# Auto-detect the latest posts file to determine today's date
+import glob
+post_files = glob.glob('web3_hiring_posts_*.json')
+if post_files:
+    # Sort by mtime (most recent first) and pick latest
+    post_files.sort(key=os.path.getmtime, reverse=True)
+    RAW_FILE = os.path.join(os.path.dirname(__file__), post_files[0])
+    # Extract date from filename for report naming
+    m = re.search(r'web3_hiring_posts_(\d{4}-\d{2}-\d{2})\.json', post_files[0])
+    report_date = m.group(1) if m else _get_report_date()
+else:
+    # Fallback: use today's date if no posts file found
+    report_date = datetime.now().strftime('%Y-%m-%d')
+    RAW_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_posts_{}.json'.format(report_date))
+REPORT_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_report_{}.html'.format(report_date))
 
 # Keywords that indicate hiring/job posts
 HIRING_KEYWORDS = [
