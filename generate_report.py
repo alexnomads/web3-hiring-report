@@ -149,7 +149,7 @@ def process_data():
     excluded_count = 0
 
     for tweet in all_tweets:
-        created_at_str = tweet.get('createdAt', '')
+        created_at_str = tweet.get('createdAt', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '')
         if created_at_str:
             tweet_dt = parse_created_at(created_at_str)
             if tweet_dt and tweet_dt.tzinfo is None:
@@ -177,7 +177,7 @@ def process_data():
         followers = author.get('followers', 0) or author.get('followersCount', 0) or 0
         is_verified = author.get('isVerified', False) or author.get('isBlueVerified', False) or author.get('verified', False)
         tweet_id = str(tweet.get('id', ''))
-        created_at = tweet.get('createdAt', '')
+        created_at = tweet.get('createdAt', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '') or tweet.get('created_at', '')
         twitter_url = tweet.get('twitterUrl', '') or author.get('twitterUrl', f'https://x.com/{username}/status/{tweet_id}')
         
         if is_hiring_post(text):
