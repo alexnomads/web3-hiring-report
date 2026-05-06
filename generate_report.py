@@ -121,9 +121,11 @@ def extract_company(text, username):
     return username
 
 def parse_created_at(created_at_str):
-    """Parse Twitter createdAt format."""
+    """Parse Twitter createdAt format - preserves local timezone."""
     try:
-        return parsedate_to_datetime(created_at_str)
+        dt = parsedate_to_datetime(created_at_str)
+        # Keep original timezone info, don't convert to UTC
+        return dt
     except Exception:
         return None
 
@@ -134,9 +136,21 @@ def process_data():
     all_tweets = raw.get('all_tweets', [])
     results = []
 
-    # Time filter: 48h UTC window
-    now_utc = datetime.now(timezone.utc)
-    cutoff_utc = now_utc - timedelta(hours=48)
+    # Time filter: 48h Europe/Madrid window (local time for accurate comparison)
+    import os
+    user_tz_env = os.environ.get('USER_TZ', 'Europe/Madrid')
+    try:
+        from datetime import tzinfo, timedelta
+        class EuropeMadrid(tzinfo):
+            def utcoffset(self, dt): return timedelta(hours=2)  # GMT+2 for summer
+            def tzname(self, dt): return "CEST"
+            def dst(self, dt): return timedelta(hours=1)
+        user_tz_obj = EuropeMadrid()
+    except:
+        from datetime import timezone, timedelta
+        user_tz_obj = timezone.utc
+    now_local = datetime.now(user_tz_obj)
+    cutoff_local = now_local - timedelta(hours=48)
     filtered_count = 0
     excluded_count = 0
 
@@ -144,11 +158,11 @@ def process_data():
         created_at_str = tweet.get('createdAt', '')
         if created_at_str:
             tweet_dt = parse_created_at(created_at_str)
+            # Compare timestamps in same timezone (local), don't convert to UTC
             if tweet_dt and tweet_dt.tzinfo is None:
-                tweet_dt = tweet_dt.replace(tzinfo=timezone.utc)
-            elif tweet_dt.utcoffset() is not None and tweet_dt.utcoffset().total_seconds() != 0:
-                tweet_dt = tweet_dt.astimezone(timezone.utc)
-            if tweet_dt and tweet_dt < cutoff_utc:
+                tweet_dt = tweet_dt.replace(tzinfo=user_tz_obj)
+                    # Skip if tweet is older than 48h in local time
+            if tweet_dt < cutoff_local:
                 excluded_count += 1
                 continue
         else:
