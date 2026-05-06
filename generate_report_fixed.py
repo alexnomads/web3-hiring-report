@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Filter raw Twitter data and generate HTML report for web3 hiring."""
+"""Filter raw Twitter data and generate HTML report for web3 hiring - FIXED VERSION."""
 import json
 import re
 import sys
@@ -139,9 +139,11 @@ def extract_company(text, username):
     return username
 
 def parse_created_at(created_at_str):
-    """Parse Twitter createdAt format: 'Tue Apr 28 15:26:11 +0000 2026'"""
+    """Parse Twitter createdAt format: 'Tue Apr 28 15:26:11 +0000 2026' -> timezone-aware datetime."""
     try:
-        return parsedate_to_datetime(created_at_str)
+        dt = parsedate_to_datetime(created_at_str)
+        # Twitter timestamps are in UTC (+0000), so they're already timezone-aware
+        return dt.replace(tzinfo=timezone.utc)
     except Exception:
         return None
 
@@ -153,45 +155,36 @@ def process_data():
     results = []
     marketing_results = []
 
-    # --- Time filter: only tweets from the last 30 hours (Europe/Madrid GMT+2) ---
-    # Use local time for filtering to match cron job timezone
-    utc_offset = timedelta(hours=2)  # Europe/Madrid in summer is UTC+2
+    # --- Time filter: only tweets from the last 30 hours (local time Europe/Madrid GMT+2) ---
+    # Use UTC consistently for all comparisons
     now_utc = datetime.now(timezone.utc)
-    now_local = datetime.fromtimestamp(now_utc.timestamp() + utc_offset.total_seconds())
-    cutoff = now_local - timedelta(hours=30)
-    filtered_count = 0
+    cutoff = now_utc - timedelta(hours=30)
     excluded_count = 0
 
     for tweet in all_tweets:
-        created_at_str = tweet.get('createdAt', '')
+        created_at_str = tweet.get('createdAt', '') or tweet.get('created_at', '')
         if created_at_str:
             tweet_dt = parse_created_at(created_at_str)
-            if tweet_dt and tweet_dt.tzinfo is None:
-                tweet_dt = tweet_dt.replace(tzinfo=timezone.utc)
             if tweet_dt and tweet_dt < cutoff:
                 excluded_count += 1
                 continue
         else:
             excluded_count += 1
             continue
-        filtered_count += 1
+        
         text = tweet.get('text', '')
         if not text or len(text) < 20:
             continue
         
         author = tweet.get('author', {})
         username = author.get('userName', '') or author.get('username', '') or ''
-        # Extract username from twitterUrl if still empty
-        if not username:
-            tu = tweet.get('twitterUrl', '') or author.get('twitterUrl', '')
-            if tu:
-                username = tu.rstrip('/').split('/')[-1]
         name = author.get('name', '')
         bio = author.get('profile_bio', '') or author.get('description', '')
         followers = author.get('followers', 0) or author.get('followersCount', 0) or 0
         is_verified = author.get('isVerified', False) or author.get('isBlueVerified', False) or author.get('verified', False)
-        tweet_id = str(tweet.get('id', ''))
-        created_at = tweet.get('createdAt', '')
+        
+        tweet_id = str(tweet.get('id', '')) or str(tweet.get('tweet_id', ''))
+        created_at = tweet.get('createdAt', '') or tweet.get('created_at', '')
         twitter_url = tweet.get('twitterUrl', '') or author.get('twitterUrl', f'https://x.com/{username}/status/{tweet_id}')
         
         if is_hiring_post(text):
@@ -225,7 +218,7 @@ def process_data():
             })
     
     print(f"Total raw tweets: {len(all_tweets)}")
-    print(f"Tweets within 30h window: {filtered_count}")
+    print(f"Tweets within 30h window: {len(all_tweets) - excluded_count}")
     print(f"Excluded (older than 30h): {excluded_count}")
     print(f"Filtered hiring posts: {len(results)}")
     print(f"Filtered marketing posts: {len(marketing_results)}")

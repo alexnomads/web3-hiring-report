@@ -54,7 +54,23 @@ def update_index():
     # Build the full report list (latest at top)
     new_report_list = '\n'.join(new_reports[:20])  # Top 20 reports
     
-    # Reconstruct HTML with updated sections
+    # Dynamically count today's posts and marketing from latest JSON file
+    import json
+    raw_path = os.path.join(os.path.dirname(__file__), f'web3_hiring_posts_{report_date}.json')
+    if os.path.exists(raw_path):
+        with open(raw_path, 'r', encoding='utf-8') as rf:
+            try:
+                raw_data = json.load(rf)
+                total_posts = raw_data.get('count', 1)
+                marketing_posts = raw_data.get('marketing_count', 0)
+            except Exception as e:
+                print(f"Warning: Could not read JSON counts: {e}")
+                total_posts = 1
+                marketing_posts = 0
+    else:
+        print(f"Warning: Raw data file not found: {raw_path}")
+        total_posts = 1
+        marketing_posts = 0
     html = f"""<!DOCTYPE html>
 <html lang='en'><head><meta charset='UTF-8'><title>Web3 Hiring Report Archive</title>
 <style>
@@ -77,8 +93,8 @@ def update_index():
 </style></head><body><div class='container'>
 <div class='header'><h1>Web3 Hiring Report Archive</h1><p>Daily Web3 hiring intelligence • Powered by @SuccessHunter</p>
 <div class='stats'><div class='stat'><div class='stat-num'>{len(report_files)}</div><div class='stat-label'>Total Reports</div></div>
-<div class='stat'><div class='stat-num'>1</div><div class='stat-label'>Today's Posts</div></div>
-<div class='stat'><div class='stat-num'>0</div><div class='stat-label'>Marketing & Growth</div></div></div></div>
+<div class='stat'><div class='stat-num'>{total_posts}</div><div class='stat-label'>Today's Posts</div></div>
+<div class='stat'><div class='stat-num'>{marketing_posts}</div><div class='stat-label'>Marketing & Growth</div></div></div></div>
 
 {latest_section}
 

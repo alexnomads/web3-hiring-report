@@ -1,9 +1,62 @@
 {
   "date": "2026-05-06",
-  "generated": "2026-05-06T12:15:54.530393+00:00",
-  "count": 0,
+  "generated": "2026-05-06T14:15:17.256579+00:00",
+  "count": 4,
   "marketing_count": 0,
-  "results": [],
+  "results": [
+    {
+      "username": "@BitcoinVeterans",
+      "name": "BitcoinVeterans",
+      "bio": "",
+      "text": "@BitcoinVeterans @DeptVetAffairs @veteransunitied Looking for a co-founder/ops/marketing. If anyone specific is interested, dm me! Ideally a BV, veterans, mil-spouse or mil connected.",
+      "job_title": null,
+      "company": "@BitcoinVeterans",
+      "tweet_id": "-3168520128662165876",
+      "followers": 0,
+      "is_verified": false,
+      "twitter_url": "https://x.com/@BitcoinVeterans/status/-3168520128662165876",
+      "created_at": "Wed May 06 14:00:00 +0000 2026"
+    },
+    {
+      "username": "@BitcoinVeterans",
+      "name": "BitcoinVeterans",
+      "bio": "",
+      "text": "@BitcoinVeterans @DeptVetAffairs @veteransunitied Looking for a co-founder/ops/marketing. If anyone specific is interested, dm me! Ideally a BV, veterans, mil-spouse or mil connected.",
+      "job_title": null,
+      "company": "@BitcoinVeterans",
+      "tweet_id": "-3168520128662165876",
+      "followers": 0,
+      "is_verified": false,
+      "twitter_url": "https://x.com/@BitcoinVeterans/status/-3168520128662165876",
+      "created_at": "Wed May 06 14:00:00 +0000 2026"
+    },
+    {
+      "username": "@ABGStartups",
+      "name": "ABGStartups",
+      "bio": "",
+      "text": "Hiring an ABG CMO.\n\nFull package: RM100/post base  $100 USD post-base views.  RM500 bonus at 1M views. 20% sales commission. Equity on top.\n\nLive AI startup. You're the face of the brand.\n\nABG non-negotiable. DM.\n\nhttps://t.co/lQ2BkHBM8b https://t.co/jkgcYsZwAm",
+      "job_title": null,
+      "company": "@ABGStartups",
+      "tweet_id": "-8281026541109740996",
+      "followers": 0,
+      "is_verified": false,
+      "twitter_url": "https://x.com/@ABGStartups/status/-8281026541109740996",
+      "created_at": "Wed May 06 13:30:00 +0000 2026"
+    },
+    {
+      "username": "@ABGStartups",
+      "name": "ABGStartups",
+      "bio": "",
+      "text": "Hiring an ABG CMO.\n\nFull package: RM100/post base  $100 USD post-base views.  RM500 bonus at 1M views. 20% sales commission. Equity on top.\n\nLive AI startup. You're the face of the brand.\n\nABG non-negotiable. DM.\n\nhttps://t.co/lQ2BkHBM8b https://t.co/jkgcYsZwAm",
+      "job_title": null,
+      "company": "@ABGStartups",
+      "tweet_id": "-8281026541109740996",
+      "followers": 0,
+      "is_verified": false,
+      "twitter_url": "https://x.com/@ABGStartups/status/-8281026541109740996",
+      "created_at": "Wed May 06 13:30:00 +0000 2026"
+    }
+  ],
   "marketing_results": [],
   "all_tweets": [
     {
@@ -13,11 +66,20 @@
       "text": "@BitcoinVeterans @DeptVetAffairs @veteransunitied Looking for a co-founder/ops/marketing. If anyone specific is interested, dm me! Ideally a BV, veterans, mil-spouse or mil connected.",
       "job_title": null,
       "company": "",
-      "tweet_id": "",
+      "tweet_id": "-3168520128662165876",
       "followers": 0,
       "is_verified": false,
       "twitter_url": "https://x.com/status",
-      "created_at": "Wed May 06 14:00:00 +0000 2026"
+      "author": {
+        "userName": "@BitcoinVeterans",
+        "name": "BitcoinVeterans",
+        "profile_bio": "",
+        "followers": 0,
+        "isVerified": false,
+        "verified": false,
+        "twitterUrl": "https://x.com/@BitcoinVeterans/status/-3168520128662165876"
+      },
+      "createdAt": "Wed May 06 14:00:00 +0000 2026"
     },
     {
       "username": "",
@@ -26,11 +88,20 @@
       "text": "@BitcoinVeterans @DeptVetAffairs @veteransunitied Looking for a co-founder/ops/marketing. If anyone specific is interested, dm me! Ideally a BV, veterans, mil-spouse or mil connected.",
       "job_title": null,
       "company": "",
-      "tweet_id": "",
+      "tweet_id": "-3168520128662165876",
       "followers": 0,
       "is_verified": false,
       "twitter_url": "https://x.com/status",
-      "created_at": "Wed May 06 14:00:00 +0000 2026"
+      "author": {
+        "userName": "@BitcoinVeterans",
+        "name": "BitcoinVeterans",
+        "profile_bio": "",
+        "followers": 0,
+        "isVerified": false,
+        "verified": false,
+        "twitterUrl": "https://x.com/@BitcoinVeterans/status/-3168520128662165876"
+      },
+      "createdAt": "Wed May 06 14:00:00 +0000 2026"
     },
     {
       "username": "",
@@ -39,11 +110,20 @@
       "text": "Hiring an ABG CMO.\n\nFull package: RM100/post base  $100 USD post-base views.  RM500 bonus at 1M views. 20% sales commission. Equity on top.\n\nLive AI startup. You're the face of the brand.\n\nABG non-negotiable. DM.\n\nhttps://t.co/lQ2BkHBM8b https://t.co/jkgcYsZwAm",
       "job_title": null,
       "company": "",
-      "tweet_id": "",
+      "tweet_id": "-8281026541109740996",
       "followers": 0,
       "is_verified": false,
       "twitter_url": "https://x.com/status",
-      "created_at": "Wed May 06 13:30:00 +0000 2026"
+      "author": {
+        "userName": "@ABGStartups",
+        "name": "ABGStartups",
+        "profile_bio": "",
+        "followers": 0,
+        "isVerified": false,
+        "verified": false,
+        "twitterUrl": "https://x.com/@ABGStartups/status/-8281026541109740996"
+      },
+      "createdAt": "Wed May 06 13:30:00 +0000 2026"
     },
     {
       "username": "",
@@ -52,11 +132,20 @@
       "text": "Hiring an ABG CMO.\n\nFull package: RM100/post base  $100 USD post-base views.  RM500 bonus at 1M views. 20% sales commission. Equity on top.\n\nLive AI startup. You're the face of the brand.\n\nABG non-negotiable. DM.\n\nhttps://t.co/lQ2BkHBM8b https://t.co/jkgcYsZwAm",
       "job_title": null,
       "company": "",
-      "tweet_id": "",
+      "tweet_id": "-8281026541109740996",
       "followers": 0,
       "is_verified": false,
       "twitter_url": "https://x.com/status",
-      "created_at": "Wed May 06 13:30:00 +0000 2026"
+      "author": {
+        "userName": "@ABGStartups",
+        "name": "ABGStartups",
+        "profile_bio": "",
+        "followers": 0,
+        "isVerified": false,
+        "verified": false,
+        "twitterUrl": "https://x.com/@ABGStartups/status/-8281026541109740996"
+      },
+      "createdAt": "Wed May 06 13:30:00 +0000 2026"
     }
   ]
 }
