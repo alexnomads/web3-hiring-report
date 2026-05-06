@@ -16,94 +16,80 @@ def _get_report_date():
     m = re.search(r'(\d{4}-\d{2}-\d{2})', base)
     return m.group(1) if m else 'unknown'
 
-# Auto-detect the latest posts file to determine today's date
+# Auto-detect the latest working posts file
 import glob
 post_files = glob.glob('web3_hiring_posts_*.json')
 if post_files:
-    # Sort by mtime (most recent first) and pick latest
-    post_files.sort(key=os.path.getmtime, reverse=True)
-    RAW_FILE = os.path.join(os.path.dirname(__file__), post_files[0])
-    # Extract date from filename for report naming
-    m = re.search(r'web3_hiring_posts_(\d{4}-\d{2}-\d{2})\.json', post_files[0])
-    report_date = m.group(1) if m else _get_report_date()
-else:
-    # Fallback: use today's date if no posts file found
-    report_date = datetime.now().strftime('%Y-%m-%d')
-    RAW_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_posts_{}.json'.format(report_date))
+    # Sort by mtime (most recent first) and pick first valid one
+    for pf in sorted(post_files, key=os.path.getmtime, reverse=True):
+        try:
+            RAW_FILE = os.path.join(os.path.dirname(__file__), pf)
+            with open(RAW_FILE, 'r', encoding='utf-8') as f:
+                raw = json.load(f)
+            if 'all_tweets' in raw or 'results' in raw:
+                # Extract date from filename for report naming
+                m = re.search(r'web3_hiring_posts_(\d{4}-\d{2}-\d{2})\.json', pf)
+                report_date = m.group(1) if m else _get_report_date()
+                break
+        except:
+            continue
+    else:
+        report_date = datetime.now().strftime('%Y-%m-%d')
+        RAW_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_posts_{}.json'.format(report_date))
 REPORT_FILE = os.path.join(os.path.dirname(__file__), 'web3_hiring_report_{}.html'.format(report_date))
 
-# Keywords that indicate hiring/job posts
-HIRING_KEYWORDS = [
-    r'\b(hiring|hire|now\s+hiring|looking\s+for|join\s+our|we\'?re?\s+looking|open\s+role|we\s+are?\s+hiring)',
-    r'\b(job|position|role|opportunity|career)\b',
-    r'\b(remote|salary|compensation|benefits)\b',
-    r'\bapply|application|submit|send\s+your',
+# Target roles (marketing/growth leadership in web3)
+TARGET_ROLE_KEYWORDS = [
+    r'\bhead\s+of\s+marketing\b',
+    r'\bhead\s+of\s+growth\b',
+    r'\b(gtm|go- to-market)\b',
+    r'\bcmo\b',
+    r'\bproduct\s+marketing\b',
+    r'\b(branding|brand\s+manager|brand\s+lead|head\s+of\s+brand)\b',
+    r'\b(marketing\s+automation|growth\s+automation)\b',
+    r'\bfounding\s+marketer\b',
+    r'\b(vp\s+marketing|director\s+of\s+marketing|marketing\s+lead|growth\s+lead)\b',
 ]
 
-# Keywords that indicate marketing/promotional content
-MARKETING_KEYWORDS = [
-    r'\b(our\s+platform|join\s+our\s+(community|network|telegram|discord|channel))',
-    r'\b(sign\s+up|subscribe|follow|download|install)\b',
-    r'\b(announcement|launch|new\s+feature|update|exclusive)',
-    r'\b(don\'?t\s+miss|limited\s+time|free\s+(signup|trial|access))',
-    r'\b(apply\s+for\s+free|get\s+started|learn\s+more)',
+# Crypto/web3 context
+CRYPTO_KEYWORDS = [
+    r'\bweb3\b', r'\bcrypto\b', r'\bblockchain\b', r'\bdefi\b', r'\bnft\b',
+    r'\bdao\b', r'\btoken\b', r'\bethereum\b', r'\bsolana\b', r'\bbitcoin\b',
+    r'\blayer2\b', r'\bzkb\b', r'\bdecentralized\b',
 ]
 
-# Exclude these common non-job patterns
-EXCLUDE_PATTERNS = [
-    r'\b(captcha|scam|phishing|fraud|warning|alert|protect)\b.*\b(yourself|your|don\'?t)\b',
-    r'\b(not\s+hiring|fake|hiring\s+posts|marketing\s+campaign)\b',
-    r'\b(someone\s+else|not\s+directly|sharing\s+for|repost)\b',
-]
-
-def is_hiring_post(text):
-    """Check if a tweet is about hiring/jobs."""
+def classify_tweet(text):
+    """Returns (category, score) where category is 'target', 'maybe', or None."""
     text_lower = text.lower()
-    
-    # First check exclusions
-    for pattern in EXCLUDE_PATTERNS:
-        if re.search(pattern, text_lower):
-            return False
-    
-    # Check hiring keywords
-    score = 0
-    for pattern in HIRING_KEYWORDS:
-        if re.search(pattern, text_lower):
-            score += 1
-    
-    # Also check for specific job-related patterns
-    if re.search(r'\b(\$[\d,]+|k\s+salary|equity|stock|bonus)\b', text_lower):
-        score += 2
-    if re.search(r'\b(remote|location|office)\b', text_lower):
-        score += 1
-    if re.search(r'\b(full[- ]?time|part[- ]?time|contract|freelance)\b', text_lower):
-        score += 1
-    if re.search(r'\b(comment|dm|send|message|email|apply)\b', text_lower):
-        score += 1
-    if re.search(r'\b(junior|senior|mid[- ]?level|lead|director|vp|cto|cfo|head\s+of)\b', text_lower):
-        score += 1
-    
-    return score >= 2
+    role_score = sum(1 for p in TARGET_ROLE_KEYWORDS if re.search(p, text_lower))
+    crypto_score = sum(1 for p in CRYPTO_KEYWORDS if re.search(p, text_lower))
 
-def is_marketing_post(text):
-    """Check if a tweet is marketing/promotional content."""
-    text_lower = text.lower()
-    
-    score = 0
-    for pattern in MARKETING_KEYWORDS:
-        if re.search(pattern, text_lower):
-            score += 1
-    
-    # Check for self-promotion patterns
-    if re.search(r'\b(we\s+build|we\s+help|we\s+offer|our\s+services|our\s+platform|our\s+team)\b', text_lower):
-        score += 1
-    if re.search(r'\b(check\s+out|visit|link\s+in|bio|profile)\b', text_lower):
-        score += 1
-    
-    return score >= 2
+    # Strong match: role keyword + crypto context
+    if role_score >= 1 and crypto_score >= 1:
+        return 'target', role_score + crypto_score
+    # Acceptable: multiple role keywords even without crypto
+    if role_score >= 2:
+        return 'target', role_score
+    # Weak match: role keyword but no crypto
+    if role_score >= 1:
+        return 'maybe', role_score
+    return None, 0
 
 def extract_job_title(text):
-    """Extract job title from text."""
+    """First try to match exact target roles, then fall back to generic."""
+    text_clean = text.replace('\n', ' ').replace('\r', ' ')
+    
+    # Direct role patterns
+    role_patterns = [
+        r'(?:hiring|looking for|now hiring)\s+(?:a\s+)?(Head of Marketing|Head of Growth|CMO|Product Marketing Manager|Brand Manager|Founding Marketer|GTM Lead|VP Marketing|Director of Marketing|Growth Lead)',
+        r'(?:role|position|opportunity)\s*:\s*(Head of Marketing|Head of Growth|CMO|Product Marketing Manager|Brand Manager|Founding Marketer|GTM Lead|VP Marketing|Director of Marketing|Growth Lead)',
+    ]
+    for pat in role_patterns:
+        m = re.search(pat, text_clean, re.IGNORECASE)
+        if m:
+            return m.group(1).strip()
+    
+    # Fall back to generic patterns
     patterns = [
         r'(?:hiring|looking for|now hiring):\s*([A-Z][A-Za-z\s&]+?)(?:\n|$|–|-|:| )',
         r'(?:hiring|looking for)\s+([A-Z][A-Za-z\s&]+?)\s+(?:a|an|for|to|in|at)',
@@ -157,8 +143,7 @@ def process_data():
     # Use local time for filtering to match cron job timezone
     utc_offset = timedelta(hours=2)  # Europe/Madrid in summer is UTC+2
     now_utc = datetime.now(timezone.utc)
-    now_local = datetime.fromtimestamp(now_utc.timestamp() + utc_offset.total_seconds())
-    cutoff = now_local - timedelta(hours=30)
+    cutoff_utc = now_utc - timedelta(hours=48)
     filtered_count = 0
     excluded_count = 0
 
@@ -166,9 +151,13 @@ def process_data():
         created_at_str = tweet.get('createdAt', '')
         if created_at_str:
             tweet_dt = parse_created_at(created_at_str)
+            # Parse tweet time as UTC (ISO 8601 format like 'Wed May 06 14:00:00 +0000 2026')
             if tweet_dt and tweet_dt.tzinfo is None:
                 tweet_dt = tweet_dt.replace(tzinfo=timezone.utc)
-            if tweet_dt and tweet_dt < cutoff:
+            elif tweet_dt.utcoffset() is not None and tweet_dt.utcoffset().total_seconds() != 0:
+                # Convert to UTC if tweet has different timezone
+                tweet_dt = tweet_dt.astimezone(timezone.utc)
+            if tweet_dt and tweet_dt < cutoff_utc:
                 excluded_count += 1
                 continue
         else:
@@ -194,7 +183,8 @@ def process_data():
         created_at = tweet.get('createdAt', '')
         twitter_url = tweet.get('twitterUrl', '') or author.get('twitterUrl', f'https://x.com/{username}/status/{tweet_id}')
         
-        if is_hiring_post(text):
+        cat, score = classify_tweet(text)
+        if cat == 'target' or cat == 'maybe':
             job_title = extract_job_title(text)
             company = extract_company(text, username)
             results.append({
@@ -209,54 +199,51 @@ def process_data():
                 'is_verified': is_verified,
                 'twitter_url': twitter_url,
                 'created_at': created_at,
-            })
-        
-        if is_marketing_post(text):
-            marketing_results.append({
-                'username': username,
-                'name': name,
-                'bio': bio,
-                'text': text,
-                'tweet_id': tweet_id,
-                'followers': followers,
-                'is_verified': is_verified,
-                'twitter_url': twitter_url,
-                'created_at': created_at,
+                'category': cat,
+                'relevance': score,
             })
     
     print(f"Total raw tweets: {len(all_tweets)}")
-    print(f"Tweets within 30h window: {filtered_count}")
-    print(f"Excluded (older than 30h): {excluded_count}")
-    print(f"Filtered hiring posts: {len(results)}")
-    print(f"Filtered marketing posts: {len(marketing_results)}")
+    print(f"Tweets within 48h window: {filtered_count}")
+    print(f"Excluded (older than 48h): {excluded_count}")
+    print(f"Filtered posts (sorted by relevance): {len(results)}")
+    raw['generated'] = datetime.now(timezone.utc).isoformat()
+    
+    # Sort by relevance score descending
+    results.sort(key=lambda r: r['relevance'], reverse=True)
+    
+    # Track seen tweet_ids for deduplication
+    seen_ids = set()
+    unique_results = []
+    for r in results:
+        if r['tweet_id'] not in seen_ids:
+            seen_ids.add(r['tweet_id'])
+            unique_results.append(r)
     
     # Update the raw data file with filtered results
-    raw['results'] = results
-    raw['marketing_results'] = marketing_results
-    raw['count'] = len(results)
-    raw['marketing_count'] = len(marketing_results)
-    raw['generated'] = datetime.now(timezone.utc).isoformat()
+    raw['results'] = unique_results
+    raw['count'] = len(unique_results)
     
     with open(RAW_FILE, 'w', encoding='utf-8') as f:
         json.dump(raw, f, indent=2, ensure_ascii=False)
     
-    return results, marketing_results
+    return unique_results
 
-def generate_html(results, marketing_results):
+def generate_html(results):
     """Generate HTML report."""
     date_str = _get_report_date()
     verified_count = sum(1 for r in results if r.get('is_verified'))
     
     # Build opportunities section
     opp_html = ""
-    for r in results[:20]:  # Top 20
-        job = r.get('job_title') or 'Opportunity'
+    for r in results[:20]:  # Top 20 by relevance
         company = r.get('company') or r.get('username', '')
         created = r.get('created_at', '')
         
         opp_html += f"""<div class='card'>
 <div class='card-header'><span class='card-handle'>@{r.get('username', '')}</span> {f'<span style="color:#888">({r.get("name", "")})</span>' if r.get('name') else ''}</div>
-<div class='card-title'>{job}</div>
+<div class='card-badge'><span class="badge badge-{"high" if r['relevance'] >= 3 else "medium"}">{"🔥 High Match" if r['relevance'] >= 3 else '✨ Medium Match'}</span></div>
+<div class='card-title'>{job or 'Opportunity'}</div>
 <div class='card-company'>{company}</div>
 <div class='card-text'>{r.get('text', '')[:300]}{'...' if len(r.get('text', '')) > 300 else ''}</div>
 <div class='card-meta'><span>🕒 {created}</span><span>👁 {r.get('followers', 0)}</span><a href="{r.get('twitter_url', '')}" target="_blank">View tweet →</a></div>
@@ -282,15 +269,16 @@ def generate_html(results, marketing_results):
 .stats{{display:flex;gap:20px;margin-top:20px}}.stat{{background:rgba(0,212,170,0.1);padding:15px 20px;border-radius:8px;flex:1;text-align:center}}
 .stat-num{{font-size:24px;font-weight:bold;color:#00d4aa}}.stat-label{{font-size:12px;color:#888;margin-top:5px}}
 .section-title{{font-size:20px;margin:30px 0 15px;padding-bottom:10px;border-bottom:1px solid #333}}
-.section-title-marketing{{color:#00d4aa}}.card{{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:15px;margin-bottom:10px}}
+.card{{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:15px;margin-bottom:10px}}
+.card-badge{{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding:8px;background:rgba(0,212,170,0.1);border-radius:4px}}
+.badge{font-weight:bold;font-size:13px;padding:4px 10px;border-radius:4px;color:#0a0a0a;background:#00d4aa}.badge-high{{background:#ff4444;color:white}}.badge-medium{{background:#ffd700;color:black}}
 .card-header{{display:flex;align-items:center;gap:8px;margin-bottom:8px}}.card-handle{{font-weight:bold;color:#00d4aa}}
-.card-title{{font-size:16px;margin-bottom:5px}}.card-company{{color:#888;font-size:14px;margin-bottom:8px}}
-.card-text{{color:#ccc;font-size:14px;line-height:1.5;margin-bottom:10px}}.card-meta{{display:flex;gap:15px;font-size:12px;color:#666}}
+.card-title{{font-size:16px;margin-bottom:5px;color:#fff}}.card-text{{color:#ccc;font-size:14px;line-height:1.5;margin-bottom:10px}}
+.card-meta{{display:flex;gap:15px;font-size:12px;color:#666}}
 .card-meta a{{color:#00d4aa;text-decoration:none}}.footer{{text-align:center;margin-top:40px;color:#555;font-size:12px}}
 </style></head><body><div class='container'>
 <div class='header'><h1>Web3 Hiring Report</h1><p>{date_str}</p>
 <div class='stats'><div class='stat'><div class='stat-num'>{len(results)}</div><div class='stat-label'>Total Posts</div></div>
-<div class='stat'><div class='stat-num'>{len(marketing_results)}</div><div class='stat-label'>Marketing & Growth</div></div>
 <div class='stat'><div class='stat-num'>{verified_count}</div><div class='stat-label'>Verified Accounts</div></div></div></div>
 
 <h2 class='section-title'>Top Hiring Opportunities</h2><div id='opportunities'>{opp_html}</div>
@@ -306,5 +294,5 @@ def generate_html(results, marketing_results):
     return html
 
 if __name__ == '__main__':
-    results, marketing_results = process_data()
+    results = process_data()
     generate_html(results, marketing_results)
