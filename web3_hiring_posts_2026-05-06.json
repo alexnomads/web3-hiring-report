@@ -1,9 +1,22 @@
 {
   "date": "2026-05-06",
-  "generated": "2026-05-06T10:42:24.594996+00:00",
-  "count": 2,
+  "generated": "2026-05-06T11:13:49.973860+00:00",
+  "count": 3,
   "marketing_count": 0,
   "results": [
+    {
+      "username": "",
+      "name": "",
+      "bio": "",
+      "text": "@BitcoinVeterans @DeptVetAffairs @veteransunited Looking for a co-founder/ops/marketing. If anyone specific is interested, dm me! Ideally a BV, veterans, mil-spouse or mil connected.",
+      "job_title": null,
+      "company": "",
+      "tweet_id": "",
+      "followers": 0,
+      "is_verified": false,
+      "twitter_url": "https://x.com//status/",
+      "created_at": "Wed May 06 10:45:34 +0000 2026"
+    },
     {
       "username": "",
       "name": "",
@@ -42,6 +55,16 @@
       "company": "nasib_fathi",
       "tweet_id": "2051953190107545897",
       "created_at": "Wed May 06 09:12:18 +0000 2026"
+    },
+    {
+      "username": "joemcgee_17",
+      "name": "",
+      "bio": "",
+      "text": "@BitcoinVeterans @DeptVetAffairs @veteransunited Looking for a co-founder/ops/marketing. If anyone specific is interested, dm me! Ideally a BV, veterans, mil-spouse or mil connected.",
+      "job_title": null,
+      "company": "joemcgee_17",
+      "tweet_id": "2051976660614811896",
+      "created_at": "Wed May 06 10:45:34 +0000 2026"
     },
     {
       "username": "startupfoundr_",
