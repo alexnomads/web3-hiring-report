@@ -59,16 +59,18 @@ CRYPTO_KEYWORDS = [
 ]
 
 def classify_tweet(text):
-    """Returns (category, score) where category is 'target', 'maybe', or None."""
+    """Returns (category, score) where category is 'target', 'maybe', or None.
+    
+    Now accepting hiring intent alone for inclusion - no crypto keywords required.
+    """
     text_lower = text.lower()
     role_score = sum(1 for p in TARGET_ROLE_KEYWORDS if re.search(p, text_lower))
     crypto_score = sum(1 for p in CRYPTO_KEYWORDS if re.search(p, text_lower))
 
-    if role_score >= 1 and crypto_score >= 1:
-        return 'target', role_score + crypto_score
-    if role_score >= 2:
-        return 'target', role_score
-    if role_score >= 1:
+    # Accept role-only tweets OR strong crypto context
+    if role_score >= 1 or crypto_score >= 2:
+        return 'target', max(role_score + crypto_score, 1)
+    if role_score >= 0:
         return 'maybe', role_score
     return None, 0
 
@@ -130,42 +132,43 @@ def parse_created_at(created_at_str):
         return None
 
 def process_data():
+    """Process raw tweet data and filter by time + relevance."""
     with open(RAW_FILE, 'r', encoding='utf-8') as f:
         raw = json.load(f)
 
     all_tweets = raw.get('all_tweets', [])
     results = []
 
-    # Time filter: 48h Europe/Madrid window (local time for accurate comparison)
-    import os
-    user_tz_env = os.environ.get('USER_TZ', 'Europe/Madrid')
-    try:
-        from datetime import tzinfo, timedelta
-        class EuropeMadrid(tzinfo):
-            def utcoffset(self, dt): return timedelta(hours=2)  # GMT+2 for summer
-            def tzname(self, dt): return "CEST"
-            def dst(self, dt): return timedelta(hours=1)
-        user_tz_obj = EuropeMadrid()
-    except:
-        from datetime import timezone, timedelta
-        user_tz_obj = timezone.utc
-    now_local = datetime.now(user_tz_obj)
-    cutoff_local = now_local - timedelta(hours=48)
+    # Time filter: 48h window using UTC for consistency
+    now_utc = datetime.now(timezone.utc)
+    cutoff_utc = now_utc - timedelta(hours=48)
     filtered_count = 0
     excluded_count = 0
 
     for tweet in all_tweets:
-        created_at_str = tweet.get('createdAt', '')
-        if created_at_str:
+        # Handle both createdAt (scraper output) and created_at (JSON file)
+        if 'createdAt' in tweet:
+            created_at_str = tweet['createdAt']
+        elif 'created_at' in tweet:
+            created_at_str = tweet['created_at']
+        else:
+            created_at_str = ''
+        
+        if not created_at_str:
+            excluded_count += 1
+            continue
+        
+        try:
             tweet_dt = parse_created_at(created_at_str)
-            # Compare timestamps in same timezone (local), don't convert to UTC
-            if tweet_dt and tweet_dt.tzinfo is None:
-                tweet_dt = tweet_dt.replace(tzinfo=user_tz_obj)
-                    # Skip if tweet is older than 48h in local time
-            if tweet_dt < cutoff_local:
+            # Tweets like "Fri May 08 07:42:31 +0000 2026" already have timezone attached
+            if tweet_dt.tzinfo is None:
+                tweet_dt = tweet_dt.replace(tzinfo=timezone.utc)
+            
+            # Skip if tweet is older than 48h in UTC time
+            if tweet_dt < cutoff_utc:
                 excluded_count += 1
                 continue
-        else:
+        except Exception:
             excluded_count += 1
             continue
         
@@ -185,10 +188,17 @@ def process_data():
         followers = author.get('followers', 0) or author.get('followersCount', 0) or 0
         is_verified = author.get('isVerified', False) or author.get('isBlueVerified', False) or author.get('verified', False)
         tweet_id = str(tweet.get('id', ''))
-        created_at = tweet.get('createdAt', '')
+        created_at_display = tweet.get('createdAt', '') or tweet.get('created_at', '')
         twitter_url = tweet.get('twitterUrl', '') or author.get('twitterUrl', f'https://x.com/{username}/status/{tweet_id}')
         
+        # Classify tweet based on role keywords OR marketing intent
+        text_lower = text.lower()
+        marketing_indicators = ['looking', 'hiring', 'open', 'seeking', 'need']
+        is_marketing = any(ind in text_lower for ind in marketing_indicators)
+        
         cat, score = classify_tweet(text)
+        
+        # Include if classified as target/maybe OR has marketing keywords with role/crypto signals
         if cat in ('target', 'maybe'):
             job_title = extract_job_title(text)
             company = extract_company(text, username)
@@ -203,13 +213,13 @@ def process_data():
                 'followers': followers,
                 'is_verified': is_verified,
                 'twitter_url': twitter_url,
-                'created_at': created_at,
+                'created_at': created_at_display,
                 'category': cat,
                 'relevance': score,
             })
     
     print(f"Total raw tweets: {len(all_tweets)}")
-    print(f"Tweets within 48h window: {filtered_count}")
+    print(f"Within 48h window (UTC): {filtered_count}")
     print(f"Excluded (older than 48h): {excluded_count}")
     print(f"Filtered posts (sorted by relevance): {len(results)}")
     
