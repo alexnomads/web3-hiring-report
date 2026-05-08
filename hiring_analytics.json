@@ -1,0 +1,144 @@
+{
+  "generated": "2026-04-15T10:01:03.348474",
+  "sources": {
+    "daily_raw": 10,
+    "weekly_raw": 125,
+    "monthly_raw": 125
+  },
+  "job_titles": {
+    "daily": [
+      {
+        "title": "Senior Full Stack Developer",
+        "count": 1
+      },
+      {
+        "title": "Senior Infrastructure Engineer",
+        "count": 1
+      },
+      {
+        "title": "Not Cold Outreach - But Working Incoming",
+        "count": 1
+      },
+      {
+        "title": "Real Opportunities",
+        "count": 1
+      },
+      {
+        "title": "Founder",
+        "count": 1
+      }
+    ],
+    "weekly": [
+      {
+        "title": "Founder",
+        "count": 9
+      },
+      {
+        "title": "Marketing Manager",
+        "count": 6
+      },
+      {
+        "title": "Community Manager",
+        "count": 5
+      },
+      {
+        "title": "Chief",
+        "count": 5
+      },
+      {
+        "title": "Growth Manager",
+        "count": 5
+      }
+    ],
+    "monthly": [
+      {
+        "title": "Founder",
+        "count": 9
+      },
+      {
+        "title": "Marketing Manager",
+        "count": 6
+      },
+      {
+        "title": "Community Manager",
+        "count": 5
+      },
+      {
+        "title": "Chief",
+        "count": 5
+      },
+      {
+        "title": "Growth Manager",
+        "count": 5
+      }
+    ]
+  },
+  "companies": {
+    "daily": [
+      {
+        "title": "MidasRWA",
+        "count": 1
+      },
+      {
+        "title": "BitGo",
+        "count": 1
+      },
+      {
+        "title": "MIKS",
+        "count": 1
+      },
+      {
+        "title": "rightfitso",
+        "count": 1
+      },
+      {
+        "title": "zorkary",
+        "count": 1
+      }
+    ],
+    "weekly": [
+      {
+        "title": "EveyNFT",
+        "count": 5
+      },
+      {
+        "title": "zhannamanzyk",
+        "count": 4
+      },
+      {
+        "title": "NikithaAnnam",
+        "count": 4
+      },
+      {
+        "title": "VeretinR",
+        "count": 3
+      },
+      {
+        "title": "ChaudharyjiTec4",
+        "count": 3
+      }
+    ],
+    "monthly": [
+      {
+        "title": "EveyNFT",
+        "count": 5
+      },
+      {
+        "title": "zhannamanzyk",
+        "count": 4
+      },
+      {
+        "title": "NikithaAnnam",
+        "count": 4
+      },
+      {
+        "title": "VeretinR",
+        "count": 3
+      },
+      {
+        "title": "ChaudharyjiTec4",
+        "count": 3
+      }
+    ]
+  }
+}
