@@ -137,6 +137,12 @@ def process_data():
         raw = json.load(f)
 
     all_tweets = raw.get('all_tweets', [])
+    
+    # If all_tweets is empty but results exists, use results directly
+    if not all_tweets and 'results' in raw:
+        print("Using pre-filtered results from JSON (all_tweets is empty)")
+        return raw['results']
+    
     results = []
 
     # Time filter: 48h window using UTC for consistency
