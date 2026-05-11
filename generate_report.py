@@ -183,19 +183,20 @@ def process_data():
         if not text or len(text) < 20:
             continue
         
+        # Handle both nested author format AND flat format (from emergency scraper)
         author = tweet.get('author', {})
-        username = author.get('userName', '') or author.get('username', '') or ''
+        username = author.get('userName', '') or author.get('username', '') or tweet.get('username', '') or ''
         if not username:
             tu = tweet.get('twitterUrl', '') or author.get('twitterUrl', '')
             if tu:
                 username = tu.rstrip('/').split('/')[-1]
-        name = author.get('name', '')
-        bio = author.get('profile_bio', '') or author.get('description', '')
-        followers = author.get('followers', 0) or author.get('followersCount', 0) or 0
+        name = author.get('name', '') or tweet.get('name', '') or username
+        bio = author.get('profile_bio', '') or author.get('description', '') or tweet.get('bio', '')
+        followers = author.get('followers', 0) or author.get('followersCount', 0) or tweet.get('likes', 0) or 0
         is_verified = author.get('isVerified', False) or author.get('isBlueVerified', False) or author.get('verified', False)
-        tweet_id = str(tweet.get('id', ''))
+        tweet_id = str(tweet.get('id', '')) or str(tweet.get('tweet_id', ''))
         created_at_display = tweet.get('createdAt', '') or tweet.get('created_at', '')
-        twitter_url = tweet.get('twitterUrl', '') or author.get('twitterUrl', f'https://x.com/{username}/status/{tweet_id}')
+        twitter_url = tweet.get('twitterUrl', '') or tweet.get('twitter_url', '') or author.get('twitterUrl', f'https://x.com/{username}/status/{tweet_id}')
         
         # Classify tweet based on role keywords OR marketing intent
         text_lower = text.lower()
