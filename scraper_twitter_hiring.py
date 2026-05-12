@@ -20,12 +20,12 @@ sys.path.insert(0, str(BIRD_X_PATH))
 
 from pathlib import Path
 import subprocess
-from last30days.bird_x import search_x, is_bird_installed, get_bird_status
-from last30days.env import load_from_env_file
+from last30days.bird_x import search_x, is_bird_installed, get_bird_status, set_credentials
+from last30days.env import load_env_file
 
 def setup_credentials():
     """Load Twitter credentials from .env or cookies."""
-    env_path = Path(__file__).parent.parent.parent / "agents-experiment" / "geopolitical-agent" / ".twitter_cookies.env"
+    env_path = Path(__file__).parent.parent / "agents-experiment" / "geopolitical-agent" / ".twitter_cookies.env"
     
     if not env_path.exists():
         print("❌ No Twitter credentials found at:", env_path)
@@ -107,6 +107,9 @@ def scrape_hiring_tweets(days_ago=2):
         return None
     
     auth_token, ct0 = creds
+    
+    # Inject credentials into bird_x module
+    set_credentials(auth_token, ct0)
     
     # Check bird is installed
     if not is_bird_installed():
