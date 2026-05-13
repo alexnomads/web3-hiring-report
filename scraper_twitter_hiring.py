@@ -13,6 +13,12 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+# Fix Windows console Unicode issues
+if sys.platform == "win32":
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
 # Add the parent workspace to path so we can import bird_x
 WORKSPACE = Path(__file__).parent.parent
 BIRD_X_PATH = WORKSPACE / "agents-experiment" / "skills" / "last30days-official" / "scripts"
@@ -99,7 +105,7 @@ def get_tweet_date(created_at: str):
 def scrape_hiring_tweets(days_ago=2):
     """Scrape hiring-related tweets from the last N days."""
     print("=" * 60)
-    print("🔍 Web3 Hiring Scraper - Starting")
+    print("[SCRAPER] Web3 Hiring Scraper - Starting")
     print("=" * 60)
     
     creds = setup_credentials()
@@ -139,7 +145,7 @@ def scrape_hiring_tweets(days_ago=2):
     count = 0
     
     for query in SEARCH_QUERIES:
-        print(f"\n🔍 Searching: {query}")
+        print(f"\n[SCRAPER] Searching: {query}")
         
         # Use bird-search with since: filter
         query_with_date = f"{query} since:{cutoff}"
